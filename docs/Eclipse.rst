@@ -1,102 +1,99 @@
 Eclipse
 =======
 
-Ingyenes fejlesztõeszköz Javahoz és számos más nyelvhez. Ingyenes, ennek ellenére
-elég jó, ezért nagyobb cégek is szívesen használják.
+Ingyenes fejlesztÃµeszkÃ¶z Javahoz Ã©s szÃ¡mos mÃ¡s nyelvhez. Ingyenes, ennek ellenÃ©re
+elÃ©g jÃ³, ezÃ©rt nagyobb cÃ©gek is szÃ­vesen hasznÃ¡ljÃ¡k.
 
-Miért használunk Eclipset vagy más IDE-t (Integrated Development Environment)
-programozáshoz? Azért, mert megkönnyíti az életünket. Ha nem hiszel nekem, pár
-napig írj programkódot Notepad-del és fordítsd command line-ból.
+MiÃ©rt hasznÃ¡lunk Eclipset vagy mÃ¡s IDE-t (Integrated Development Environment)
+programozÃ¡shoz? AzÃ©rt, mert megkÃ¶nnyÃ­ti az Ã©letÃ¼nket. Ha nem hiszel nekem, pÃ¡r
+napig Ã­rj programkÃ³dot Notepad-del Ã©s fordÃ­tsd command line-bÃ³l.
 
-Az Eclipse futtatásához JRE-t vagy JDK-t kell telepíteni a gépedre. A JRE futtató
-környezet, a JDK fejlesztéshez kell, az Eclipse mindkettõvel megy. Azért érdemes
-a JDK-t telepíteni, mert ad pár eszközt amit a JRE nem és a JDK-val látni fogod
-a Java forráskódját az Eclipse-ben.
+Az Eclipse futtatÃ¡sÃ¡hoz JRE-t vagy JDK-t kell telepÃ­teni a gÃ©pedre. A JRE futtatÃ³
+kÃ¶rnyezet, a JDK fejlesztÃ©shez kell, az Eclipse mindkettÃµvel megy. AzÃ©rt Ã©rdemes
+a JDK-t telepÃ­teni, mert ad pÃ¡r eszkÃ¶zt amit a JRE nem Ã©s a JDK-val lÃ¡tni fogod
+a Java forrÃ¡skÃ³djÃ¡t az Eclipse-ben.
 
-Letöltés
+LetÃ¶ltÃ©s
 --------
 
-Ingyenesen letöltheted az Eclipse oldaláról:
+Ingyenesen letÃ¶ltheted az Eclipse oldalÃ¡rÃ³l:
   https://eclipse.org/downloads
 
-Letöltöd a neked tetszõ verziót (régebbi verzióknál ezt válaszd: "Eclipse IDE for
-Java Developers"), ami egy .zip fájl kellene legyen. Tetszõleges helyre
-kicsomagolod a gépeden és kész. Nem kell semmilyen installert futtatni.
+LetÃ¶ltÃ¶d a neked tetszÃµ verziÃ³t (rÃ©gebbi verziÃ³knÃ¡l ezt vÃ¡laszd: "Eclipse IDE for
+Java Developers"), ami egy .zip fÃ¡jl kellene legyen. TetszÃµleges helyre
+kicsomagolod a gÃ©peden Ã©s kÃ©sz. Nem kell semmilyen installert futtatni.
 
-Jelenleg a Neon a legújabb verzió, állítólag van valami gond vele. Én még nem
-használtam. 
+Jelenleg a Neon a legÃºjabb verziÃ³, Ã¡llÃ­tÃ³lag van valami gond vele. Ã‰n mÃ©g nem
+hasznÃ¡ltam.
 
-Workspace és Project Location
+Workspace Ã©s Project Location
 -----------------------------
 
-A Project Location az a hely, ahol a projektünk fájljait helyezzük. Az elsõ
-projektünknél ez a "...\JAVA_BASES\programs\001_JavaBases\" könyvtár.
+A Project Location az a hely, ahol a projektÃ¼nk fÃ¡jljait helyezzÃ¼k. Az elsÃµ
+projektÃ¼nknÃ©l ez a "...\JAVA_BASES\programs\001_JavaBases\" kÃ¶nyvtÃ¡r.
 
-A Workspace az a hely, ahova az Eclipse pakolja a saját fájljait, amik neki
-ugyan kellenek, de a projektünk jól megvan nélkülük. Én készítettem neki
-egy "...\WS\" nevû könyvtárat, amit a GIT nem követ, tehát a "...\JAVA_BASES\"
-könyvtáron kívül van. Amikor az Eclipse elindul, ezt a "...\WS\" könyvtárat
+A Workspace az a hely, ahova az Eclipse pakolja a sajÃ¡t fÃ¡jljait, amik neki
+ugyan kellenek, de a projektÃ¼nk jÃ³l megvan nÃ©lkÃ¼lÃ¼k. Ã‰n kÃ©szÃ­tettem neki
+egy "...\WS\" nevÃ» kÃ¶nyvtÃ¡rat, amit a GIT nem kÃ¶vet, tehÃ¡t a "...\JAVA_BASES\"
+kÃ¶nyvtÃ¡ron kÃ­vÃ¼l van. Amikor az Eclipse elindul, ezt a "...\WS\" kÃ¶nyvtÃ¡rat
 add meg neki.
 
-Általában a Project Location a Workspacen belül szokott lenni, de nem kötelezõ.
-Én most önknényesen különválasztottam õket.
+ÃltalÃ¡ban a Project Location a Workspacen belÃ¼l szokott lenni, de nem kÃ¶telezÃµ.
+Ã‰n most Ã¶nknÃ©nyesen kÃ¼lÃ¶nvÃ¡lasztottam Ãµket.
 
-Eclipse elsõ indítása
+Eclipse elsÃµ indÃ­tÃ¡sa
 ---------------------
 
-Kétszer rákattintasz az "eclipse.exe" fájlra és már indul is. Elõször kéri a
-Workspacet, add meg neki amit a "Workspace és Project Location" fejezetben írtam.
+KÃ©tszer rÃ¡kattintasz az "eclipse.exe" fÃ¡jlra Ã©s mÃ¡r indul is. ElÃµszÃ¶r kÃ©ri a
+Workspacet, add meg neki amit a "Workspace Ã©s Project Location" fejezetben Ã­rtam.
 
-A legelsõ indulás után bejön a "Welcome" oldal, amit nyugodtan bezárhatsz. Ha
-késõbb meg akarod nézni, akkor "Help" --> "Welcome".
+A legelsÃµ indulÃ¡s utÃ¡n bejÃ¶n a "Welcome" oldal, amit nyugodtan bezÃ¡rhatsz. Ha
+kÃ©sÃµbb meg akarod nÃ©zni, akkor "Help" --> "Welcome".
 
-Állítsuk be a JDK: Nyisd meg a "Windows" --> "Preferences" oldalt. A bal oldalon
-keresd meg a "Java" --> "Installed JREs"-t. Jobbról nyomd meg az "Add" gombot.
-Válaszd ki a "Standard VM"-et, nyomd le a "Next" gombot. Keresd meg a
-"JRE Home"-ot (nálam: "C:\Program Files\Java\jdk1.8.0_91") és nyomd le a "Finish"
-gombot. Kattintsd be a JDK sorát és nyomj "OK"-t. Mostantól az összes projekt ami
-ehhez a Workspacehez tartozik, alapértelmezetten a JDK-t kellene hogy használja.
-Azért nem árt ellenõrizni. :)
+ÃllÃ­tsuk be a JDK: Nyisd meg a "Windows" --> "Preferences" oldalt. A bal oldalon
+keresd meg a "Java" --> "Installed JREs"-t. JobbrÃ³l nyomd meg az "Add" gombot.
+VÃ¡laszd ki a "Standard VM"-et, nyomd le a "Next" gombot. Keresd meg a
+"JRE Home"-ot (nÃ¡lam: "C:\Program Files\Java\jdk1.8.0_91") Ã©s nyomd le a "Finish"
+gombot. Kattintsd be a JDK sorÃ¡t Ã©s nyomj "OK"-t. MostantÃ³l az Ã¶sszes projekt ami
+ehhez a Workspacehez tartozik, alapÃ©rtelmezetten a JDK-t kellene hogy hasznÃ¡lja.
+AzÃ©rt nem Ã¡rt ellenÃµrizni. :)
 
-Projekt létrehozása
+Projekt lÃ©trehozÃ¡sa
 -------------------
 
-Mivel elfelejtettem hozzáadni a GIT-hez a 001_JavaBases projekt ".project"
-fájlját, nem fogod tudni importálni. Node sebaj! Készíts rá egy projektet,
-mintha nem is létezne:
+A kÃ¶vetkezo feladatokhoz Ã­gy kÃ©szÃ­ts projektet:
 
 - "File" --> "New" --> "Java Project"
-- távolítsd el a pipát a "Use default location"-rõl
-- keresd meg a projekt helyét "...\JAVA_BASES\programs\001_JavaBases\
-- elvileg magától ki fogja tölteni a "Project name"-t
-- "JRE"-nek állítsd be a "Use default JRE (currently 'jdk1.8.0_91')"-t
-  (valószínûéeg nálad más lesz a verziószám)
+- adj meg egy szÃ©p projektnevet, mint pl. "001_JavaBases" (ha mÃ©g nincs ilyen)
+- tÃ¡volÃ­tsd el a pipÃ¡t a "Use default location"-rÃµl (ez csak azÃ©rt kell, mert
+  nekÃ¼nk kÃ¼lÃ¶n van a workspace)
+- keresd meg a projekt helyÃ©t GIT alatt "...\JAVA_BASES\programs\"
+- "JRE"-nek Ã¡llÃ­tsd be a "Use default JRE (currently 'jdk1.8.0_91')"-t
+  (valÃ³szÃ­nÅ±leg nÃ¡lad mÃ¡s lesz a verziÃ³szÃ¡m)
 - "Finish"
 
-Ha már itt vagy, hozzáadhatnád GIT-hez a ".project" fájlt. :)
-
-Projekt importálása
+Projekt importÃ¡lÃ¡sa
 -------------------
 
-Ha nem felejtettem volna el hozzáadni a ".project" fájlt, akkor ezt kellene
-csinálnod:
+Ezt kellene csinÃ¡lnod azokkal a projektekkel, amiket Ã©n tettem fel GIT-be:
+
 - "File" --> "Import"
 - "General" --> "Existing project into Workspace"
-- "Select root directory:"-nak állítsd be a Project Location-t
+- "Select root directory:"-nak Ã¡llÃ­tsd be a Project Location-t
   ("...\JAVA_BASES\programs\001_JavaBases")
-- miután becsekkoltad a projekt checkbox-szát, "Finish"
+- miutÃ¡n becsekkoltad a projekt checkbox-szÃ¡t, "Finish"
 
-Program futtatása Eclipse-ben
+Program futtatÃ¡sa Eclipse-ben
 -----------------------------
 
-- a baloldalon megkeresed a futtatandó projektet ("001_JavaBases")
-- ha kell, addig nyitogatod szét, amíg megtalálod a "HelloWorld.java" fájlt
-  (azért pont ezt, mert ebben van a "main" matódus, ami a Java programok
-  indítási pontja)
-- rákattintasz jobb gombbal
+- a baloldalon megkeresed a futtatandÃ³ projektet ("001_JavaBases")
+- ha kell, addig nyitogatod szÃ©t, amÃ­g megtalÃ¡lod a "HelloWorld.java" fÃ¡jlt
+  (azÃ©rt pont ezt, mert ebben van a "main" matÃ³dus, ami a Java programok
+  indÃ­tÃ¡si pontja)
+- rÃ¡kattintasz jobb gombbal
 - "Run As" --> "Java Application"
-- ha erre rákattintasz, akkoe el kellene indulni a programnak és ki kellene
-  írnia, hogy "Hello World!"
+- ha erre rÃ¡kattintasz, akkoe el kellene indulni a programnak Ã©s ki kellene
+  Ã­rnia, hogy "Hello World!"
 
-Az Eclipse érzékelni fogja, ha még nem volt lefordítva a projekt vagy
-megváltozott a legutolsó fordítás óta és újra fordítja indítás elõtt.
+Az Eclipse Ã©rzÃ©kelni fogja, ha mÃ©g nem volt lefordÃ­tva a projekt vagy
+megvÃ¡ltozott a legutolsÃ³ fordÃ­tÃ¡s Ã³ta Ã©s Ãºjra fordÃ­tja indÃ­tÃ¡s elÃµtt.
