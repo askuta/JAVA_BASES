@@ -13,8 +13,8 @@ hs_err_pid*
 
 # Ignore Eclipse specific files.
 .settings
-.classpath
-.project
+//.classpath
+//.project
 
 # Ignore build directories.
 build/
