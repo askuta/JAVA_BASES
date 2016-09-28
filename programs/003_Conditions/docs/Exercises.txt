@@ -1,0 +1,59 @@
+=========
+Exercises
+=========
+
+1.) Használd a meglévő "003_Conditions" projektet.
+
+  - add hozzá a projekthez az "E01_Conditions" osztályt, ami:
+    - beolvas a usertől egy számot 1-től 10-ig
+    - kiírja a számot betűkkel (pl. 1-et olvas be és "egy"-et ír ki)
+    - használj IF-ELSE-IF-et
+
+  - add hozzá a projekthez az "E02_Conditions" osztályt, ami:
+    - beolvas a usertől egy számot 1-től 10-ig
+    - kiírja a számot betűkkel (pl. 1-et olvas be és "egy"-et ír ki)
+    - ha a beolvasott szám mégsem esik az 1 - 10 tarományba, a program szóljon be a usernek
+    - használj IF-ELSE-IF-et
+
+  - add hozzá a projekthez az "E03_Conditions" osztályt, ami:
+    - beolvas a usertől egy számot 1-től 10-ig
+    - kiírja a számot betűkkel (pl. 1-et olvas be és "egy"-et ír ki)
+    - használj SWITCH-et
+
+  - add hozzá a projekthez az "E04_Conditions" osztályt, ami:
+    - beolvas a usertől egy számot 1-től 10-ig
+    - kiírja a számot betűkkel (pl. 1-et olvas be és "egy"-et ír ki)
+    - ha a beolvasott szám mégsem esik az 1 - 10 tarományba, a program szóljon be a usernek
+    - használj SWITCH-et
+
+  - add hozzá a projekthez az "E05_Conditions" osztályt, ami:
+    - beolvas a usertől egy számot 1-től 99-ig
+    - kiírja a számot betűkkel (pl. 1-et olvas be és "egy"-et ír ki)
+    - ha a beolvasott szám mégsem esik az 1 - 99 tarományba, a program szóljon be a usernek
+    - segítség: modulo 10-zel ketté tudod vágni a számot egyesekre és tizesekre
+    - segítség2: az egyesekhez és a tizesekhez veheted alapul az "E04_Conditions" osztályt
+    - segítség3: vigyázz, mert a kerek "tíz" és a "tizen", illetve a "húsz" és a "huszon"
+      eltérő bánásmódot igényel
+    - javaslom, hogy használj SWITCH-eket, de rád bízom
+
+  - add hozzá a projekthez az "E06_Conditions" osztályt, ami:
+    - beolvas a usertől egy számot 1-től 999-ig, de most betűkkel kiírva
+    - kiírja a számot számokkal (pl. "százegy"-et olvas be és 101-et ír ki)
+    - segítség: a stringeknek van 4 idevágó metódusa, amikből válogathatsz kedvedre (nem kell mind):
+      - startsWith(), true vagy false értéket ad vissza: pl.
+        "százegy".startsWith("száz");
+        --> true lesz.
+      - endsWith(), true vagy false értéket ad vissza: pl.
+        "százegy".endsWith("egy");
+        --> true lesz.
+      - replace(target, replacement), megkeresi a targetet és lecseréli replacementre
+        "százegy".replace("száz", "");
+        vagyis lecseréljük a "száz"-at az üres stringre, akkor marad "egy"
+      - substring(beginIndex, endIndex), veszi a string karaktereit beginIndex-től endIndex-ig
+        "százegy".substring(4, 7);
+        az eredmény "egy" lesz, mert a substring olyen furcsán működik, hogy a beginIndex-től az
+        endIndex előtti karakterig veszi a stringet
+    - segítség2: az egyesekhez, tízesekhez és százasokhoz veheted alapul az "E04_Conditions"
+      osztály fordítottját
+    - segítség3: vigyázz, mert a kerek "tíz" és a "tizen", illetve a "húsz" és a "huszon"
+      eltérő bánásmódot igényel

@@ -1,0 +1,117 @@
+=========
+Exercises
+=========
+
+1.) Szedd le a gépedre, buildeld és futtasd a "001_JavaBases" projektet.
+
+2.) Készíts egy új projektet "002_Asterisks" névvel.
+
+  - add hozzá a projekthez az "E01_Asterisks" osztályt, ami:
+    - kirajzol 11 darab csillag karaktert egymás mellé: '***********'
+    - leshetsz a "HelloWorld" osztályból
+
+  - add hozzá a projekthez az "E02_Asterisks" osztályt, ami:
+    - kirajzol 11 x 11 csillag karaktert
+    - nehezítés: csak egyszer használhatod a "System.out.println(...)" metódust
+  
+  - add hozzá a projekthez az "E03_Asterisks" osztályt, ami:
+    - kirajzol 11 x 11 csillag karaktert
+    - nehezítés: csak egyszer használhatod a programodban a '*' karaktert
+
+  - add hozzá a projekthez az "E04_Asterisks" osztályt, ami:
+    - kirajzol egy 11 x 11 karakterbol álló mintát, amiben minden páratlan elem
+      csillag, minden páros elem kötojel
+    - nehezítés: csak egyszer használhatod a '*' és egyszer a '-' karaktert
+    - a végeredménynek így kell kinéznie:
+      *-*-*-*-*-*
+      -*-*-*-*-*-
+      *-*-*-*-*-*
+      -*-*-*-*-*-
+      *-*-*-*-*-*
+      -*-*-*-*-*-
+      *-*-*-*-*-*
+      -*-*-*-*-*-
+      *-*-*-*-*-*
+      -*-*-*-*-*-
+      *-*-*-*-*-*
+
+  - add hozzá a projekthez az "E05_Asterisks" osztályt, ami:
+    - kirajzol az elso sorba 11 csillag karaktert, majd minden sorba eggyel kevesebbet
+    - nehezítés: csak egyszer használhatod a programodban a '*' karaktert
+    - a végeredménynek így kell kinéznie:
+      ***********
+      **********
+      *********
+      ********
+      *******
+      ******
+      *****
+      ****
+      ***
+      **
+      *
+
+  - add hozzá a projekthez az "E06_Asterisks" osztályt, ami:
+    - kirajzol az elso sorba 11 karaktert, majd minden sorba eggyel kevesebbet
+    - legyen minden páratlan elem csillag, minden páros elem kötojel
+    - nehezítés: csak egyszer használhatod a programodban a '*' és egyszer a '-' karaktert
+    - a végeredménynek így kell kinéznie:
+      *-*-*-*-*-*
+      -*-*-*-*-*
+      -*-*-*-*-
+      *-*-*-*-
+      *-*-*-*
+      -*-*-*
+      -*-*-
+      *-*-
+      *-*
+      -*
+      -
+
+  - add hozzá a projekthez az "E07_Asterisks" osztályt, ami:
+    - kirajzol 20 x 20 '-' karaktert
+    - rárajzol egy 8 egység sugarú kört '*' karakterekkel (nem kell felülírni a kötőjeleket, rajold egyből a csillagokat)
+    - a kör középpontja: 7. sor 6. oszlop (könnyítés: mindkét esetben 0-tól számolunk)
+    - nehezítés: csak egyszer használhatod a programodban a '*' és egyszer a '-' karaktert
+    - segítség: mielőtt kirajzolsz egy pontot, Pitagorasz-tételével számold ki a távolságát a kör középpontjától
+    - segítség2: a távolság számításánál nem kell gyököt vonnod, elég összehasonlítani az oldalak négyzeteit
+    - a végeredménynek így kell kinéznie:
+      ---*******----------
+      -***********--------
+      *************-------
+      *************-------
+      **************------
+      **************------
+      **************------
+      ***************-----
+      **************------
+      **************------
+      **************------
+      *************-------
+      *************-------
+      -***********--------
+      ---*******----------
+      ------*-------------
+      --------------------
+      --------------------
+      --------------------
+      --------------------
+
+  - add hozzá a projekthez az "E06_Asterisks_Mod" osztályt, ami:
+    - kirajzol az elso sorba 11 karaktert, majd minden sorba eggyel kevesebbet
+    - legyen minden páratlan elem csillag, minden páros elem kötojel
+    - nehezítés: csak egyszer használhatod a programodban a '*' és egyszer a '-' karaktert
+    - nehezítés: nem használhatsz külső számlálót (csak ennyiben tér el a "E06_Asterisks"-tól)
+    - segítség: nézd meg a végeredmény ábrát, a sorok párossága/páratlansága elég szabályosan alakul, azt felhasználhatod valahogy
+    - a végeredménynek így kell kinéznie (kivéve a sorvégi "==> ..." segítséget):
+      *-*-*-*-*-*   ==> 11 ==> páratlan
+      -*-*-*-*-*   ==> 21 ==> páratlan
+      -*-*-*-*-   ==> 30 ==> páros
+      *-*-*-*-   ==> 38 ==> páros
+      *-*-*-*   ==> 45 ==> páratlan
+      -*-*-*   ==> 51 ==> páratlan
+      -*-*-   ==> 56 ==> páros
+      *-*-   ==> 60 ==> páros
+      *-*   ==> 63 ==> páratlan
+      -*   ==> 65 ==> páratlan
+      -   ==> 66 ==> páros
