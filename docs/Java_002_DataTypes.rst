@@ -252,3 +252,129 @@ akkor létrehozta) "3" értékkel és átadta a referenciát a "long2"-nek.
 Az autoboxing visszafelé is működik, írhatunk olyat, hogy:
 
   long primitiveLong = long2;
+
+Tömbök
+------
+
+Ha ugyanabból a típusból több elemet szeretnél együtt tárolni és elég magabiztos
+vagy az elemek (maximális) számát illetően, akkor használhatsz tömböket.
+
+A tömbök jófejek, tárolni tudnak primitív és nem primitív típusokat is.
+
+Ha tömböt használsz, egy fontos megkötésre kell odafigyelned, a tömb méretére.
+Amikor egy tömböt inicializálsz (az egyenlőségjel jobb oldala), meg kell adnod a
+méretét, amit később nem változtathatsz meg. A méreténél kevesebb tölthetsz bele,
+de többet nem tudsz. Arra az esetre is van egy csúnya megoldás, készítesz egy
+nagyobb tömböt és abba átmásolsz mindent, de ez időigényes és rusnya megoldás.
+Ha nem vagy biztos a méretben, használj listát, erről majd később beszélünk.
+
+Nézzünk egy példát:
+
+  int[] intArray = new int[10];
+
+Ez a tömböcske int típusú elemeket fog tartalmazni, a tömb neve "intArray" és 10
+elemet tárolhatsz benne. Az elemek mindegyike megkapja az int típus default
+értékét, ami 0.
+
+Ugyanaz a tömb másik formában:
+
+  int intArray[] = new int[10];
+
+Nem tudom, hogy miért használható ez a forma, én az elsőt preferálom.
+
+Ha akarod, feltöltheted a tömböt elemekkel:
+
+  int[] intArray = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+  Az inicializálásnál nem adjuk meg a tömb méretét (mert úgyis felsoroljuk őket)
+  és kapcsos zárójelben felsoroljuk az elemeket.
+
+Hogy érhetjük el a tömb elemeit? Használni kell a tömb nevét, utána pedig szögletes
+zárójelben meg kell adni a kívánt elem sorszámát:
+
+  int value = intArray[1]; // A value változóba beleírjuk a tömb adott elemének értékét.
+  intArray[1] = value; // A tömb adott elemébe beleírjuk a value változó értékét.
+
+A tömbök indexelése 0-tól indul, tehát esetünkben az első elemre intArray[0] -val,
+az utolsóra 9-cel kell hivatkozni:
+
+  +---+---+---+---+---+---+---+---+---+---+
+  | 0.| 1.| 2.| 3.| 4.| 5.| 6.| 7.| 8.| 9.|
+  +---+---+---+---+---+---+---+---+---+---+
+
+Lekérdezhetjük a tömb hosszát:
+
+  int lenghtOfArray = intArray.length; // lenghtOfArray is 10
+
+Objektum tömbök
+~~~~~~~~~~~~~~~
+
+Hasonlóan létrehozhatunk tömböt ami objektumokat tartalmaz, pl. File objektumokat:
+
+  File[] fileArray = new File[5];
+
+Objektumok esetén a default value "null" lesz. Ez egy speciális érték, ami kb. azt
+jelenti, hogy az adott referenciához nincs objektum létrehozva. Sok fejfájást okoz
+majd Neked is, érdemes odafigyelni rá.
+
+Többdimenziós tömbök
+~~~~~~~~~~~~~~~~~~~~
+
+Van lehetőség 2 vagy több dimenziós tömbök létrehozására is, ahol a több lehet 3,
+4, 5,... Attól, hogy nem tudod elképzelni, a Java még képes kezelni. Attól, hogy
+létre lehet hozni, még nem szükséges ilyeneket csinálnod. :)
+
+Kétdimenziós tömb példák:
+
+  int[][] intArray = new int[10][10];
+  int intArray[][] = new int[10][10];
+  int[] intArray[] = new int[10][10];
+
+Mindhárom példa ugyanolyan kétdimenziós tömböt hoz létre. Lehetőleg az első kettő
+egyikét használd, a harmadikat inkább ne.
+
+Az elemekre mindhárom esetben így hivatkozhatsz:
+
+  value = intArray[1][2];
+  intArray[1][2] = value;
+
+A kettő vagy többdimenziós tömböket ne mátrixként (vagy magasabb dimenzióban
+nemtommiként képzeld el, hanem képzelj tömböket, amik tömböket tartalmaznak, amik
+tömböket tartalmaznak, amik tömböket tartalmaznak, amik tömböket tartalmaznak, ...
+
+Így a tömbök hosszainak sem szükségszerű egyformának lenniük:
+
+  int[][] intArray = new int[][] { { 1, 2, 3 }, { 4, 5 }, { 6, 7, 8, 9 } };
+
+  Lerajzolva:
+
+         0.      1.      2.
+     +-------+-------+-------+
+     | +---+ | +---+ | +---+ |
+  0. | | 1 | | | 4 | | | 6 | |
+     | +---+ | +---+ | +---+ |
+  1. | | 2 | | | 5 | | | 7 | |
+     | +---+ | +---+ | +---+ |
+  2. | | 3 | |       | | 8 | |
+     | +---+ |       | +---+ |
+  3. |       |       | | 9 | |
+     |       |       | +---+ |
+     +-------+-------+-------+
+
+  Az elemek:
+
+  intArray[0][0] --> 1
+  intArray[0][1] --> 2
+  intArray[0][2] --> 3
+  intArray[1][0] --> 4
+  intArray[1][1] --> 5
+  intArray[2][0] --> 6
+  intArray[2][1] --> 7
+  intArray[2][2] --> 8
+  intArray[2][3] --> 9
+
+Végül egy tömb, ami különböző méretű tömböket tartalmaz(hat):
+
+  int[][] intArray = new int[10][];
+
+  Ez a tömb egy 10 elemű tömb, aminek az elemei int tömbök (a default értékek: null). :)
