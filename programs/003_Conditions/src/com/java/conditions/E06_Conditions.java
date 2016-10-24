@@ -13,28 +13,39 @@ public class E06_Conditions {
 		System.out.println("Mondj egy számot 1-tõl 999-ig!");
 
 		String line;
-		boolean whileRunning = true;
-		while (whileRunning) {
+		while (true) {
 			line = reader.readLine();
 
 			int myNumber = Integer.parseInt(line);
+			
+			if (myNumber < 1 || myNumber > 999) {
+				System.out.println("Tényleg csak 1 és 999 között kéne, OK?");
+				break;
+			} else if (myNumber == 666) {
+				System.out.println("\\m/");
+				break;
+			}
+			
 			int ones = myNumber % 10;
 			int tens = myNumber % 100 - ones;
 			int hundreds = myNumber - tens - ones;
 			
-			if (myNumber > 0 && myNumber < 1000) {
-				System.out.println(calculateHundreds(hundreds)
-						+ calculateTens(hundreds, tens, ones)
-						+ calculateOnes(hundreds, tens, ones));
+			if (hundreds == 0) {
+				if (tens == 0) {
+					System.out.println(calculateOnes(ones));
+				} else {
+					System.out.println(calculateTens(tens, ones)
+							+ calculateOnes(ones).toLowerCase());
+				}
 			} else {
-				System.out.println("Tényleg csak 1 és 999 között kéne, OK?");
-				whileRunning = false;
+				System.out.println(calculateHundreds(hundreds)
+						+ calculateTens(tens, ones).toLowerCase()
+						+ calculateOnes(ones).toLowerCase());
 			}
 		}
 	}
 	
-	private static String calculateOnes(int hundreds, int tens, int ones) {
-		if (tens == 0 && hundreds == 0) {
+	private static String calculateOnes(int ones) {
 			switch (ones) {
 			case 1 : return "Egy";
 			case 2 : return "Kettõ";
@@ -47,25 +58,9 @@ public class E06_Conditions {
 			case 9 : return "Kilenc";
 			default : return "";
 			}
-		} else {
-			switch (ones) {
-			case 1 : return "egy";
-			case 2 : return "kettõ";
-			case 3 : return "három";
-			case 4 : return "négy";
-			case 5 : return "öt";
-			case 6 : return "hat";
-			case 7 : return "hét";
-			case 8 : return "nyolc";
-			case 9 : return "kilenc";
-			default : return "";
-			}
-		}	
 	}
 	
-	private static String calculateTens(int hundreds, int tens, int ones) {
-		if (hundreds == 0) {
-			
+	private static String calculateTens(int tens, int ones) {
 			switch (tens) {
 			case 10 : {
 				if (ones == 0) {
@@ -90,35 +85,6 @@ public class E06_Conditions {
 			case 90 : return "Kilencven";
 			default : return "";
 			}
-			
-		} else {
-			
-			switch (tens) {
-			case 10 : {
-				if (ones == 0) {
-					return "tíz";
-				} else {
-					return "tizen";
-				}
-			}
-			case 20 : {
-				if (ones == 0) {
-					return "húsz";
-				} else {
-					return "huszon";
-				}
-			}
-			case 30 : return "harminc";
-			case 40 : return "negyven";
-			case 50 : return "ötven";
-			case 60 : return "hatvan";
-			case 70 : return "hetven";
-			case 80 : return "nyolcvan";
-			case 90 : return "kilencven";
-			default : return "";
-			}
-			
-		}
 	}
 	private static String calculateHundreds(int hundreds) {
 		switch (hundreds) {
