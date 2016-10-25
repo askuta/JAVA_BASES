@@ -1,0 +1,49 @@
+=========
+Exercises
+=========
+
+1.) Készítsd el a "004_Loops" projektet.
+
+  - add hozzá a projekthez az "E01_Loops" osztályt, ami:
+    - készít egy 10 elemű tömböt (int típusú)
+    - feltölti int típusú véletlenszámokkal, a legnagyobb véletlenszám 99 lehet
+    - kiírja a tömb elemeit
+    - segítség véletlenszám generálásához:
+      Random random = new Random();
+      int randomNumber = random.nextInt(100);
+
+  - add hozzá a projekthez az "E02_Loops" osztályt, ami:
+    - készít egy 10 elemű tömböt (int típusú)
+    - feltölti int típusú véletlenszámokkal, a legnagyobb véletlenszám 99 lehet
+    - kiírja a tömb elemeit
+    - összeadja a számokat
+    - kiírja az összeget
+
+  - add hozzá a projekthez az "E03_Loops" osztályt, ami:
+    - készít egy 10 elemű tömböt (int típusú)
+    - feltölti int típusú véletlenszámokkal, a legnagyobb véletlenszám 99 lehet
+    - kiírja a tömb elemeit
+    - megkeresi a legkisebb és a legnagyobb számokat
+    - kiírja a legkisebb és a legnagyobb számokat
+
+  - add hozzá a projekthez az "E04_Loops" osztályt, ami:
+    - készít egy 10 elemű tömböt (int típusú)
+    - feltölti int típusú véletlenszámokkal, a legnagyobb véletlenszám 99 lehet
+    - kiírja a tömb elemeit
+    - megcseréli az első és az utolsó számokat
+    - kiírja a tömb elemeit
+
+  - add hozzá a projekthez az "E05_Loops" osztályt, ami:
+    - készít egy 10 elemű tömböt (int típusú)
+    - feltölti int típusú véletlenszámokkal, a legnagyobb véletlenszám 99 lehet
+    - kiírja a tömb elemeit
+    - megfordítja a számok sorrendjét
+    - kiírja a tömb elemeit
+
+  - add hozzá a projekthez az "E06_Loops" osztályt, ami:
+    - készít egy 10 elemű tömböt (int típusú)
+    - feltölti int típusú véletlenszámokkal, a legnagyobb véletlenszám 99 lehet
+    - kiírja a tömb elemeit
+    - nagyság szerint rendezi a tömb elemeit, a legkisebb szám legyen elől, a legnagyobb hátul
+    - kiírja a tömb elemeit
+    - segítség (a buborékrendezés leírása): https://hu.wikipedia.org/wiki/Bubor%C3%A9krendez%C3%A9s
