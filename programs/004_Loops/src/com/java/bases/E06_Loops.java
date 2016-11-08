@@ -4,18 +4,36 @@ import java.util.Random;
 
 public class E06_Loops {
 
+	private static final int ARRAY_SIZE = 10;
+	private static final int RANDOM_NUMBER_LIMIT = 100;
+	
 	public static void main(String[] args) {
+		int[] array = new int[ARRAY_SIZE];
+		setRandomNumbers(array);
+		printArray(array);
+		sortIncArray(array);
+		System.out.println("Növekvõ sorrendbe rendezve:");
+		printArray(array);
+	}
+	
+	private static void setRandomNumbers(int[] array) {
 		Random random = new Random();
-
-		int[] array = new int[10];
+		for (int index = 0; index < array.length; index++) {
+			array[index] = random.nextInt(RANDOM_NUMBER_LIMIT);
+		}
+	}
+	
+	private static void printArray(int[] array) {
+		System.out.print(" | ");
+		for (int number : array) {
+			System.out.print(number + " | ");
+		}
+		System.out.println();
+	}
+	
+	private static void sortIncArray(int[] array) {
 		int switcher;
 		boolean didSwap = true;
-		
-		for (int index = 0; index < array.length; index++) {
-			array[index] = random.nextInt(100);
-			System.out.println(array[index]);
-		}
-		
 		while (didSwap){
 			didSwap= false;
 			for(int j = 0; j < array.length - 1; j++) {
@@ -25,12 +43,5 @@ public class E06_Loops {
 				}
 			}
 		}
-		
-		System.out.println("Növekvõ sorrendbe rendezve:");
-		
-		for (int index = 0; index < array.length; index++) {
-			System.out.println(array[index]);
-		}
 	}
-
 }

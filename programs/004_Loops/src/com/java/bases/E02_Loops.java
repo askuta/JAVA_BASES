@@ -4,18 +4,36 @@ import java.util.Random;
 
 public class E02_Loops {
 
+	private static final int ARRAY_SIZE = 10;
+	private static final int RANDOM_NUMBER_LIMIT = 100;
+	
 	public static void main(String[] args) {
+		int[] array = new int[ARRAY_SIZE];
+		setRandomNumbers(array);
+		printArray(array);
+		System.out.print(" | Összesen: " + sumOfArray(array));
+	}
+
+	private static void setRandomNumbers(int[] array) {
 		Random random = new Random();
-
-		int[] array = new int[10];
-		int sum = 0;
-
 		for (int index = 0; index < array.length; index++) {
-			array[index] = random.nextInt(100);
-			System.out.println(array[index]);
-			sum = sum + array[index];
+			array[index] = random.nextInt(RANDOM_NUMBER_LIMIT);
 		}
-
-		System.out.println("összesen: " + sum);
+	}
+	
+	private static void printArray(int[] array) {
+		System.out.print(" | ");
+		for (int number : array) {
+			System.out.print(number + " | ");
+		}
+		System.out.println();
+	}
+	
+	private static int sumOfArray(int[] array) {
+		int sum = 0;
+		for (int number : array) {
+			sum = sum + number;
+		}
+		return sum;
 	}
 }
