@@ -4,23 +4,39 @@ import java.util.Random;
 
 public class E05_Loops {
 
+	private static final int ARRAY_SIZE = 10;
+	private static final int RANDOM_NUMBER_LIMIT = 100;
+	
 	public static void main(String[] args) {
-		Random random = new Random();
-
-		int[] array = new int[10];
-		int[] yarra = new int[10];
-		
-		for (int index = 0; index < array.length; index++) {
-			array[index] = random.nextInt(100);
-			yarra[array.length - index - 1] = array[index];
-			System.out.println(array[index]);
-		}
-		
+		int[] array = new int[ARRAY_SIZE];
+		setRandomNumbers(array);
+		printArray(array);
+		switchOrderOfArray(array);
 		System.out.println("Miután az elemek sorrendjét fölcseréltük:");
-		
-		for (int index = 0; index < yarra.length; index++) {
-			System.out.println(yarra[index]);
-		}
+		printArray(array);
 	}
 
+	private static void setRandomNumbers(int[] array) {
+		Random random = new Random();
+		for (int index = 0; index < array.length; index++) {
+			array[index] = random.nextInt(RANDOM_NUMBER_LIMIT);
+		}
+	}
+	
+	private static void printArray(int[] array) {
+		System.out.print(" | ");
+		for (int number : array) {
+			System.out.print(number + " | ");
+		}
+		System.out.println();
+	}
+	
+	private static void switchOrderOfArray(int[] array) {
+		int temp;
+		for (int index = 0; index < array.length / 2; index++) {
+			temp = array[index];
+			array[index] = array[array.length - index - 1];
+			array[array.length - index - 1] = temp;
+		}
+	}
 }
