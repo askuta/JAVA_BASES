@@ -1,0 +1,89 @@
+=========
+Exercises
+=========
+
+Nyisd meg a 005_Classes_01 projektet.
+
+  - add hozzá a projekthez a "com.java.classes.circle" package-t:
+    - készíts a package-ben egy Circle osztályt, aminek a következő, kívűlről nem látható és nem
+      módosítható adattagjai legyenek (az adattagok után ott a segítség, hogy kell kinézniük):
+      - coordX: private final double coordX;
+      - coordY: private final double coordY;
+      - radius: private final double radius;
+    - mivel az adattagok nem módosíthatóak ("final"-ok), kell egy konstruktor ami beállítja őket:
+      public Circle(double coordX, double coordY, double radius) {
+        this.coordX = coordX;
+        this.coordY = coordY;
+        this.radius = radius;
+      }
+    - mivel az adattagok kívűlről nem láthatóak, de esetleg valaki kíváncsi lehet rájuk, készíts
+      gettert minden adattaghoz (kérlek, hogy rendesen formázd meg a gettereket!):
+      public double getCoordX() { return coordX; }
+      public double getCoordY() { return coordY; }
+      public double getRadius() { return radius; }
+    - készíts egy metódust, ami kiszámítja a kör kerületét
+    - készíts egy metódust, ami kiszámítja a kör területét
+    - készíts egy metódust, ami paraméterként kap egy másik kör objektumot és ellenőrzi, hogy a két
+      kör ütközik-e, van-e átfedés köztük:
+      public boolean collide(Circle circle) { ... }
+    - készítsd el a "C03_Classes" osztályt, ami a "main" metódusában készít néhány Circle objektumot,
+      kiszámítja a kerületüket és a területüket, illetve megnézi, hogy ütköznek-e
+
+  - add hozzá a projekthez a "com.java.classes.prime" package-t:
+    - Ez a példa ki fogja írni az összes prím számot nullától egy adott számig. Azt a bizonyos számot
+      a Prime osztály konstruktorában kell megadni. A konstruktor inicializál egy tömböt, aminek a
+      mérete "szám" + 1 és boolean-okat tárol. Kezdetben legyen a tömb minden eleme true, kivéve a 0.
+      és az 1. elemeit. Ezzel azt jelezzük, hogy a 0. és az 1. elemek kivételével bármelyik szám/elem
+      lehet prím szám. Tehát kezdetben csak a 0. és az 1. elemeket zárjuk ki, azok biztosan nem prím
+      számok. A többi szám prímségét majd eldönti a program.
+    - készíts a package-ben egy Prime osztályt, aminek a következő, kívűlről nem látható és nem
+      módosítható adattagjai legyenek (az adattagok után ott a segítség, hogy kell kinézniük):
+      - number: private final int number;
+      - primes: private final boolean[] primes;
+    - mivel az adattagok nem módosíthatóak ("final"-ok), kell egy konstruktor ami beállítja őket:
+      public Prime(int number) {
+        this.number = number;
+        primes = new boolean[number + 1];
+      }
+    - készítsd el a "printPrimes" metódust, ami kiírja a prím számokat:
+      - írj egy ciklust, ami a tömb 2. elemétől (primes[2] -től) végig megy a tömb elemein
+      - ha a tömb adott, mondjuk X-edik eleme true, akkor az prím szám:
+        - írd ki a prím számot
+        - menj végig a tömbön és minden X-edik elemet állíts át false-ra (pl. ha X = 3, akkor a tömb
+          6., 9., 12., stb. elmeket állítsd false-ra)
+      - ha a tömb adott eleme false, akkor az nem prím szám, menj a következő iterációra
+    - készítsd el a "C04_Classes" osztályt, ami a "main" metódusában kiírja az összes prím számot
+      bizonyos számokig, ehhez használd a Prime osztályt
+
+  - add hozzá a projekthez a "com.java.classes.numbers" package-t:
+    - készíts a package-ben egy MyNumber osztályt, aminek a következő, kívűlről nem látható és nem
+      módosítható adattagja legyen (az adattag után ott a segítség, hogy kell kinéznie):
+      - private final int number;
+    - mivel az adattag nem módosítható ("final"), kell egy konstruktor ami beállítja:
+      public MyNumber(int number) {
+        this.number = number;
+      }
+    - mivel az adattag kívűlről nem látható, de esetleg valaki kíváncsi lehet rá, készíts gettert
+      ami visszaadja a számot:
+      public int getNumber() {
+        return number;
+      }
+    - készíts egy metódust, ami egy másik számot vár paraméterként, azt hozzáadja az adott számhoz
+      és egy új szám objektumban visszaadja az eredményt:
+      public MyNumber add(MyNumber otherNumber) {
+        return new MyNumber(this.number + otherNumber.number);
+      }
+    - készíts metódust, ami a kivonás műveletet végzi el
+    - készítsd el a "C05_Classes" osztályt, ami a "main" metódusában készít pár MyNumber objektumot,
+      amiket összead és kivon egymásból, végezz el több összeadás/kivonás műveletet egymás után fűzve
+
+  - add hozzá a projekthez a "com.java.classes.coins" package-t:
+    - készítsd el a Coins osztályt, ami a konstruktorában vár egy pozitív egész számot, azt eltárolja
+      egy kívűlről nem látható, nem módosítható adattagban (ez az adat egy pénzösszeg)
+    - készíts egy gettert az adattaghoz
+    - készíts egy metódust, ami kiszámolja és kiírja, hogy a tárolt pénzösszeget hogy kell felváltani
+      az alábbi címletekkel úgy, hogy minimális darabszámú címletre váltsd fel az eredeti összeget:
+      - 1Ft, 2Ft, 5Ft, 10Ft, 20Ft, 50Ft, 100Ft, 500Ft, 1000Ft, 2000Ft, 5000Ft, 100000Ft, 20000Ft
+    - segítség: a feladat megoldható mohó algoritmussal, vagyis a következő címletnek mindig
+      válaszd a lehető legnagyobb címletet
+    - készítsd el a "C06_Classes" osztályt, ami a "main" metódusában használja a Coins osztályt
