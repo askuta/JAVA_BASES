@@ -11,7 +11,7 @@ public class E05_Loops {
 		int[] array = new int[ARRAY_SIZE];
 		setRandomNumbers(array);
 		printArray(array);
-		switchOrderOfArray(array);
+		reverseArray(array);
 		System.out.println("Miután az elemek sorrendjét fölcseréltük:");
 		printArray(array);
 	}
@@ -31,7 +31,7 @@ public class E05_Loops {
 		System.out.println();
 	}
 	
-	private static void switchOrderOfArray(int[] array) {
+	private static void reverseArray(int[] array) {
 		int temp;
 		for (int index = 0; index < array.length / 2; index++) {
 			temp = array[index];
