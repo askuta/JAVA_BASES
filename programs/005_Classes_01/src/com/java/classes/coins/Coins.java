@@ -2,56 +2,30 @@ package com.java.classes.coins;
 
 public class Coins {
 
-	private final double price;
+	private static final int[] DENOMS = { 20000, 10000, 5000, 2000, 1000, 500, 200, 100, 50, 20, 10, 5 };
 	
-	public Coins(double price) {
+	private final int price;
+	
+	public Coins(int price) {
 		this.price = price;
 	}
 	
-	public double getPrice() {
+	public int getPrice() {
 		return price;
 	}
 	
 	public void giveCash() {
 		System.out.println("The amount of " + price + " would be given as:");
-		for (double index = price; index >= 5; ) {
-			if (index >= 20000) {
-				System.out.print("20000, ");
-				index = index - 20000;
-			} else if (index >= 10000) {
-				System.out.print("10000, ");
-				index = index - 10000;
-			} else if (index >= 5000) {
-				System.out.print("5000, ");
-				index = index - 5000;
-			} else if (index >= 2000) {
-				System.out.print("2000, ");
-				index = index - 2000;
-			} else if (index >= 1000) {
-				System.out.print("1000, ");
-				index = index - 1000;
-			} else if (index >= 500) {
-				System.out.print("500, ");
-				index = index - 500;
-			} else if (index >= 200) {
-				System.out.print("200, ");
-				index = index - 200;
-			} else if (index >= 100) {
-				System.out.print("100, ");
-				index = index - 100;
-			} else if (index >= 50) {
-				System.out.print("50, ");
-				index = index - 50;
-			} else if (index >= 20) {
-				System.out.print("20, ");
-				index = index - 20;
-			} else if (index >= 10) {
-				System.out.print("10, ");
-				index = index - 10;
-			} else if (index >= 5) {
-				System.out.print("5, ");
-				index = index - 5;
-			}
+		int tempPrice = price;
+		for (int denom : DENOMS) {
+			while (tempPrice >= denom) {
+				System.out.print(denom + ", ");
+				tempPrice = tempPrice - denom;
+			}	
+		}
+		
+		if ((DENOMS[DENOMS.length - 1] + 1) / 2 <= tempPrice) {
+			System.out.print(DENOMS[DENOMS.length - 1]);
 		}
 	}
 }
