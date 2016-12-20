@@ -23,11 +23,18 @@ public class C02_Classes {
 
 		SchoolClass schoolClass = new SchoolClass(students);
 		
-		introduceStudent(schoolClass, students[0]);
-		introduceStudent(schoolClass, students[1]);
-		introduceStudent(schoolClass, students[2]);
-		introduceStudent(schoolClass, students[3]);
-		introduceStudent(schoolClass, students[11]);
+		IntroduceStudent.introduceStudent(schoolClass, students[0]);
+		IntroduceStudent.introduceStudent(schoolClass, students[1]);
+		IntroduceStudent.introduceStudent(schoolClass, students[2]);
+		IntroduceStudent.introduceStudent(schoolClass, students[3]);
+		IntroduceStudent.introduceStudent(schoolClass, students[4]);
+		IntroduceStudent.introduceStudent(schoolClass, students[5]);
+		IntroduceStudent.introduceStudent(schoolClass, students[6]);
+		IntroduceStudent.introduceStudent(schoolClass, students[7]);
+		IntroduceStudent.introduceStudent(schoolClass, students[8]);
+		IntroduceStudent.introduceStudent(schoolClass, students[9]);
+		IntroduceStudent.introduceStudent(schoolClass, students[10]);
+		IntroduceStudent.introduceStudent(schoolClass, students[11]);
 
 	}
 

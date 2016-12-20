@@ -45,13 +45,15 @@ public class IntroduceStudent {
 			averageChap = false;
 		} else if (schoolClass.victimStudent() == student) {
 			System.out.print("and " + personalPronoun + "'s the victim of "
-					+ schoolClass.victimStudent().name + "'s bullying");
+					+ schoolClass.bullyStudent().name + "'s bullying");
 			averageChap = false;
 		}
 		
 		if (averageChap) {
 			System.out.print("an average chap");
 		}
+		
+		System.out.println();
 	}
 
 	private static String getPersonalPronoun(Student student) {
