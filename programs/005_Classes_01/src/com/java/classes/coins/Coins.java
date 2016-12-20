@@ -16,7 +16,8 @@ public class Coins {
 	
 	public void giveCash() {
 		System.out.println("The amount of " + price + " would be given as:");
-		int tempPrice = price;
+
+    int tempPrice = price;
 		for (int denom : DENOMS) {
 			while (tempPrice >= denom) {
 				System.out.print(denom + ", ");
