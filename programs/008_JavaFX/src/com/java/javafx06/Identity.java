@@ -1,7 +1,7 @@
 package com.java.javafx06;
 
 public class Identity {
-
+	
 	public enum Gender {
 		MALE, FEMALE
 	}
@@ -10,22 +10,24 @@ public class Identity {
 		URBAN, RURAL
 	}
 	
-	private Gender gender;
 	private String country;
+	private Gender gender;
 	private Urban urban;
 	
-	public Identity(Gender gender, String country, Urban urban) {
-		this.gender = gender;
+	public Identity(String country, Gender gender, Urban urban) {
 		this.country = country;
+		this.gender = gender;
 		this.urban = urban;
+	}
+	
+	public int livesCounter;
+	
+	public String getCountry () {
+		return country;
 	}
 	
 	public Gender getGender () {
 		return gender;
-	}
-	
-	public String getCountry () {
-		return country;
 	}
 	
 	public Urban getUrban () {
@@ -41,7 +43,19 @@ public class Identity {
 			description += "girl ";
 		}
 		
-		description += "in " + country;
+		description += "in ";
+		
+		if (urban == Urban.URBAN) {
+			description += "urban ";
+		} else {
+			description += "rural ";
+		}
+		
+		description += country;
+		
+		if (country == "Hungary") {
+			description += "! Welcome to Magyaristan! You waited " + livesCounter + " lives.";
+		}
 		
 		return description;
 	}

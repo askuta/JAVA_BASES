@@ -15,6 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class C06_JavaFX extends Application {
@@ -31,13 +32,15 @@ public class C06_JavaFX extends Application {
 	
 	@Override
 	public void start(Stage stage) throws Exception {
-		stage.setTitle("Reincatron 1.0");
+		stage.setTitle("Reincatron 3.0");
 		
 		Text description = new Text("Who are you in your next life?");
 		description.setFont(Font.font("Arial", FontWeight.NORMAL, 14));
 		
 		Text identityDescription = new Text("You are a...");
 		identityDescription.setFont(Font.font("Arial", FontWeight.NORMAL, 14));
+		identityDescription.setWrappingWidth(180);
+		identityDescription.setTextAlignment(TextAlignment.CENTER);
 		
 		Button reincarnate = new Button("Reincarnate!");
 		reincarnate.setOnAction(new EventHandler<ActionEvent>() {
@@ -46,6 +49,7 @@ public class C06_JavaFX extends Application {
 			public void handle(ActionEvent event) {
 				Identity identity = createIdentity();
 				identityDescription.setText(identity.getDescription());
+				identity.livesCounter += 1;
 			}
 		});
 		
@@ -62,14 +66,17 @@ public class C06_JavaFX extends Application {
 	}
 	
 	private Identity createIdentity() {
-		Gender gender;
-		if (random.nextBoolean()) {
-			gender = Gender.MALE;
-		} else {
-			gender = Gender.FEMALE;
-		}
+				
+		int livesCounter = 0;
 		
 		CountryStat countryStat = statContainer.getRandomCountryStat();
+		
+		Gender gender;
+		if (random.nextDouble() * 100 < countryStat.getWomanRate()) {
+			gender = Gender.FEMALE;
+		} else {
+			gender = Gender.MALE;
+		}
 		
 		Urban urban;
 		if (random.nextDouble() * 100 < countryStat.getUrbanRate()) {
@@ -78,6 +85,6 @@ public class C06_JavaFX extends Application {
 			urban = Urban.RURAL;
 		}
 		
-		return new Identity(gender, countryStat.getName(), urban);
+		return new Identity(countryStat.getName(), gender, urban);
 	}
 }
