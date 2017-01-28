@@ -49,7 +49,6 @@ public class C06_JavaFX extends Application {
 			public void handle(ActionEvent event) {
 				Identity identity = createIdentity();
 				identityDescription.setText(identity.getDescription());
-				identity.livesCounter += 1;
 			}
 		});
 		
@@ -67,8 +66,6 @@ public class C06_JavaFX extends Application {
 	
 	private Identity createIdentity() {
 				
-		int livesCounter = 0;
-		
 		CountryStat countryStat = statContainer.getRandomCountryStat();
 		
 		Gender gender;

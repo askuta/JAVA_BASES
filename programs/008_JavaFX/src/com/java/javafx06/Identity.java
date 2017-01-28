@@ -1,7 +1,9 @@
 package com.java.javafx06;
 
 public class Identity {
-	
+
+	private static int livesCounter = 0;
+
 	public enum Gender {
 		MALE, FEMALE
 	}
@@ -13,14 +15,13 @@ public class Identity {
 	private String country;
 	private Gender gender;
 	private Urban urban;
-	
+
 	public Identity(String country, Gender gender, Urban urban) {
 		this.country = country;
 		this.gender = gender;
 		this.urban = urban;
+		livesCounter += 1;
 	}
-	
-	public int livesCounter;
 	
 	public String getCountry () {
 		return country;
@@ -53,8 +54,9 @@ public class Identity {
 		
 		description += country;
 		
-		if (country == "Hungary") {
+		if ("Hungary".equals(country)) {
 			description += "! Welcome to Magyaristan! You waited " + livesCounter + " lives.";
+			livesCounter = 0;
 		}
 		
 		return description;
