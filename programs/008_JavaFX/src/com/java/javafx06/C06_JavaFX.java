@@ -32,7 +32,7 @@ public class C06_JavaFX extends Application {
 	
 	@Override
 	public void start(Stage stage) throws Exception {
-		stage.setTitle("Reincatron 3.0");
+		stage.setTitle("Reincatron 1.3");
 		
 		Text description = new Text("Who are you in your next life?");
 		description.setFont(Font.font("Arial", FontWeight.NORMAL, 14));

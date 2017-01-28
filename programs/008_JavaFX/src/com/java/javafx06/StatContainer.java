@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class StatContainer {
 
-	private static final String STAT_FILE = "/ReincaStats3.csv";
+	private static final String STAT_FILE = "/ReincaStats4.csv";
 
 	private static final int NUMBER_OF_STAT_RECORDS = 217;
 
@@ -57,9 +57,15 @@ public class StatContainer {
 				worldPopulation += population;
 				double womanRate = Double.parseDouble(splits[2]);
 				double urbanRate = Double.parseDouble(splits[3]);
+				double dollarsPerDay = Double.parseDouble(splits[7]);
+				double giniIndex = Double.parseDouble(splits[8]);
+				double mortalityInfantFemale = Double.parseDouble(splits[11]);
+				double mortalityInfantMale = Double.parseDouble(splits[12]);
+				double mortalityChildFemale = Double.parseDouble(splits[13]);
+				double mortalityChildMale = Double.parseDouble(splits[14]);
 
-				countryStats[index] = new CountryStat(splits[0], population,
-						womanRate, urbanRate);
+				countryStats[index] = new CountryStat(splits[0], population, womanRate, urbanRate, dollarsPerDay,
+						giniIndex, mortalityInfantFemale, mortalityInfantMale, mortalityChildFemale, mortalityChildMale);
 			}
 
 		} catch (IOException e) {
