@@ -1,4 +1,4 @@
-package com.java.javafx06;
+package com.java.reincarnator;
 
 public class CountryStat {
 
@@ -6,21 +6,21 @@ public class CountryStat {
 	private final int population;
 	private final double womanRate;
 	private final double urbanRate;
-	private final double dollarsPerDay;
+	private final double averageDollarsPerDay;
 	private final double giniIndex;
 	private final double mortalityInfantFemale;
 	private final double mortalityInfantMale;
 	private final double mortalityChildFemale;
 	private final double mortalityChildMale;
 
-	public CountryStat(String name, int population, double womanRate, double urbanRate, double dollarsPerDay,
+	public CountryStat(String name, int population, double womanRate, double urbanRate, double averageDollarsPerDay,
 			 double giniIndex, double mortalityInfantFemale, double mortalityInfantMale, double mortalityChildFemale,
 			 double mortalityChildMale) {
 		this.name = name;
 		this.population = population;
 		this.urbanRate = urbanRate;
 		this.womanRate = womanRate;
-		this.dollarsPerDay = dollarsPerDay;
+		this.averageDollarsPerDay = averageDollarsPerDay;
 		this.giniIndex = giniIndex;
 		this.mortalityInfantFemale = mortalityInfantFemale;
 		this.mortalityInfantMale = mortalityInfantMale;
@@ -40,8 +40,8 @@ public class CountryStat {
 	public double getUrbanRate() {
 		return urbanRate;
 	}
-	public double getDollarsPerDay() {
-		return dollarsPerDay;
+	public double getAverageDollarsPerDay() {
+		return averageDollarsPerDay;
 	}
 	public double getGiniIndex() {
 		return giniIndex;

@@ -1,4 +1,4 @@
-package com.java.javafx06;
+package com.java.reincarnator;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -57,14 +57,14 @@ public class StatContainer {
 				worldPopulation += population;
 				double womanRate = Double.parseDouble(splits[2]);
 				double urbanRate = Double.parseDouble(splits[3]);
-				double dollarsPerDay = Double.parseDouble(splits[7]);
-				double giniIndex = Double.parseDouble(splits[8]);
-				double mortalityInfantFemale = Double.parseDouble(splits[11]);
-				double mortalityInfantMale = Double.parseDouble(splits[12]);
-				double mortalityChildFemale = Double.parseDouble(splits[13]);
-				double mortalityChildMale = Double.parseDouble(splits[14]);
+				double averageDollarsPerDay = Double.parseDouble(splits[4]);
+				double giniIndex = Double.parseDouble(splits[5]);
+				double mortalityInfantFemale = Double.parseDouble(splits[8]);
+				double mortalityInfantMale = Double.parseDouble(splits[9]);
+				double mortalityChildFemale = Double.parseDouble(splits[10]);
+				double mortalityChildMale = Double.parseDouble(splits[11]);
 
-				countryStats[index] = new CountryStat(splits[0], population, womanRate, urbanRate, dollarsPerDay,
+				countryStats[index] = new CountryStat(splits[0], population, womanRate, urbanRate, averageDollarsPerDay,
 						giniIndex, mortalityInfantFemale, mortalityInfantMale, mortalityChildFemale, mortalityChildMale);
 			}
 
