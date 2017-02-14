@@ -18,7 +18,7 @@ public class PuzzleMenuBar extends MenuBar {
 		getMenus().add(menu);
 	}
 
-	private MenuItem createShuffle(PuzzleBoard puzzleBoard) {
+	private MenuItem createShuffle(final PuzzleBoard puzzleBoard) {
 		MenuItem menuShuffle = new MenuItem("Shuffle");
 		menuShuffle.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -30,7 +30,7 @@ public class PuzzleMenuBar extends MenuBar {
 		return menuShuffle;
 	}
 
-	private MenuItem createSort(PuzzleBoard puzzleBoard) {
+	private MenuItem createSort(final PuzzleBoard puzzleBoard) {
 		MenuItem menuSort = new MenuItem("Sort");
 		menuSort.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -42,7 +42,7 @@ public class PuzzleMenuBar extends MenuBar {
 		return menuSort;
 	}
 
-	private Menu createSize(PuzzleBoard puzzleBoard) {
+	private Menu createSize(final PuzzleBoard puzzleBoard) {
 		MenuItem menuItem3x3 = new MenuItem("3 x 3");
 		menuItem3x3.setOnAction(new EventHandler<ActionEvent>() {
 
