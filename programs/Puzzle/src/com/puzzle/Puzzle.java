@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 public class Puzzle extends Application {
 
-	private static final String IMAGE_LOCATION = "/funnyImage.jpg";
+	private static final String IMAGE_LOCATION = "/RaiseThePressure.jpg";
 
 	public static void main(String[] args) {
 		Application.launch(args);
@@ -30,6 +30,7 @@ public class Puzzle extends Application {
 		stage.setScene(scene);
 		stage.setTitle("Puzzle");
 		stage.setResizable(false);
+		stage.sizeToScene();
 		stage.show();
 	}
 }
