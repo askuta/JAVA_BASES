@@ -21,6 +21,8 @@ import javafx.stage.Stage;
 
 public class Reincarnator extends Application {
 
+	private static final String BACKGROUND_FILE = "/Background.png";
+
 	public static void main(String[] args) {
 		Application.launch(args);
 	}
@@ -33,7 +35,8 @@ public class Reincarnator extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		stage.setTitle("Reincatron 1.3");
+
+		stage.setTitle("Reincatron");
 
 		Text description = new Text("Who are you in your next life?");
 		description.setFont(Font.font("Arial", FontWeight.NORMAL, 14));
@@ -54,13 +57,20 @@ public class Reincarnator extends Application {
 		});
 
 		VBox vbox = new VBox(20);
-		vbox.setAlignment(Pos.CENTER);
+		vbox.setAlignment(Pos.TOP_LEFT);
 		vbox.getChildren().add(description);
 		vbox.getChildren().add(reincarnate);
 		vbox.getChildren().add(identityDescription);
 
-		Scene scene = new Scene(vbox, 250, 150);
+		Scene scene = new Scene(vbox, 800, 600);
 		stage.setScene(scene);
+		stage.setResizable(false);
+
+		String background = Reincarnator.class.getResource(BACKGROUND_FILE)
+				.toExternalForm();
+		vbox.setStyle("-fx-background-image: url('" + background + "'); "
+				+ "-fx-background-position: center center; "
+				+ "-fx-background-repeat: stretch;");
 
 		stage.show();
 	}
@@ -74,12 +84,14 @@ public class Reincarnator extends Application {
 
 		Urban urban = createUrban(countryStat);
 
-		double dollarsPerDay = createDollarsPerDay(countryStat);
+		double dollarsPerDay = createDollarsPerDay(countryStat, gender, urban);
 
-		return new Identity(countryStat.getName(), gender, death, urban, dollarsPerDay);
+		return new Identity(countryStat.getName(), gender, death, urban,
+				dollarsPerDay);
 	}
 
-	private double createDollarsPerDay(CountryStat countryStat) {
+	private double createDollarsPerDay(CountryStat countryStat, Gender gender,
+			Urban urban) {
 		double dollarsPerDay;
 		double[] incomeDecimals = new double[12];
 
@@ -107,9 +119,124 @@ public class Reincarnator extends Application {
 			System.out.print(incomeDecimals[index] + " | ");
 		}
 		System.out.println("");
-		//Eddig
+		// Eddig
 
 		int decimal = random.nextInt(12);
+
+		// Rögtönzött súlyozás nem és lakhely szerint, nagyjából 20%-os
+		// eltéréssel számolva
+		int bias = random.nextInt(6);
+		switch (bias) {
+		case 0:
+			bias = 0;
+			break;
+		case 1:
+			bias = 0;
+			break;
+		case 2:
+			bias = 0;
+			break;
+		case 3:
+			bias = 1;
+			break;
+		case 4:
+			bias = 1;
+			break;
+		case 5:
+			bias = 2;
+			break;
+		default:
+			bias = 0;
+		}
+
+		if (gender == Gender.MALE) {
+			switch (bias) {
+			case 0:
+				break;
+			case 1:
+				if (decimal < 11) {
+					decimal++;
+					break;
+				}
+			case 2:
+				if (decimal < 10) {
+					decimal = decimal + 2;
+					break;
+				}
+			}
+		} else {
+			switch (bias) {
+			case 0:
+				break;
+			case 1:
+				if (decimal > 0) {
+					decimal--;
+					break;
+				}
+			case 2:
+				if (decimal > 0) {
+					decimal = decimal - 2;
+					break;
+				}
+			}
+		}
+
+		bias = random.nextInt(6);
+		switch (bias) {
+		case 0:
+			bias = 0;
+			break;
+		case 1:
+			bias = 0;
+			break;
+		case 2:
+			bias = 0;
+			break;
+		case 3:
+			bias = 1;
+			break;
+		case 4:
+			bias = 1;
+			break;
+		case 5:
+			bias = 2;
+			break;
+		default:
+			bias = 0;
+		}
+
+		if (urban == Urban.URBAN) {
+			switch (bias) {
+			case 0:
+				break;
+			case 1:
+				if (decimal < 11) {
+					decimal++;
+					break;
+				}
+			case 2:
+				if (decimal < 10) {
+					decimal = decimal + 2;
+					break;
+				}
+			}
+		} else {
+			switch (bias) {
+			case 0:
+				break;
+			case 1:
+				if (decimal > 0) {
+					decimal--;
+					break;
+				}
+			case 2:
+				if (decimal > 0) {
+					decimal = decimal - 2;
+					break;
+				}
+			}
+		}
+		// eddig
 
 		if (random.nextBoolean()) {
 			if (decimal == incomeDecimals.length - 1) {
@@ -139,18 +266,22 @@ public class Reincarnator extends Application {
 	private Death createDeath(CountryStat countryStat, Gender gender) {
 		Death death = Death.ALIVE;
 		if (gender == Gender.FEMALE) {
-			if (random.nextDouble() * 100 < countryStat.getMortalityInfantFemale()) {
+			if (random.nextDouble() * 100 < countryStat
+					.getMortalityInfantFemale()) {
 				death = Death.INFANT;
 			} else {
-				if (random.nextDouble() * 100 < countryStat.getMortalityChildFemale()) {
+				if (random.nextDouble() * 100 < countryStat
+						.getMortalityChildFemale()) {
 					death = Death.CHILD;
 				}
 			}
 		} else {
-			if (random.nextDouble() * 100 < countryStat.getMortalityInfantMale()) {
+			if (random.nextDouble() * 100 < countryStat
+					.getMortalityInfantMale()) {
 				death = Death.INFANT;
 			} else {
-				if (random.nextDouble() * 100 < countryStat.getMortalityChildMale()) {
+				if (random.nextDouble() * 100 < countryStat
+						.getMortalityChildMale()) {
 					death = Death.CHILD;
 				}
 			}
@@ -173,5 +304,5 @@ public class Reincarnator extends Application {
 			return Urban.RURAL;
 		}
 	}
-	
+
 }

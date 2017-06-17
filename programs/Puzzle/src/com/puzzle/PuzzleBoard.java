@@ -11,6 +11,7 @@ public class PuzzleBoard extends GridPane {
 
 	private static final int DEFAULT_NUMBER_OF_COLUMNS = 3;
 	private static final int DEFAULT_NUMBER_OF_ROWS = 3;
+	private static final int OFFSET = 3;
 
 	private int columns = DEFAULT_NUMBER_OF_COLUMNS;
 	private int rows = DEFAULT_NUMBER_OF_ROWS;
@@ -21,8 +22,8 @@ public class PuzzleBoard extends GridPane {
 	private Random random = new Random();
 
 	public PuzzleBoard(Image image) {
-		super.setHgap(3);
-		super.setVgap(3);
+		super.setHgap(OFFSET);
+		super.setVgap(OFFSET);
 		super.setStyle("-fx-background-color: black;");
 
 		this.image = image;
@@ -42,9 +43,17 @@ public class PuzzleBoard extends GridPane {
 
 		fields[fields.length - 1].setColumnAndRow(-1, -1);
 
-		for (int index = 0; index < fields.length; index++) {
-			int changeIndex = random.nextInt(fields.length);
-			changeFields(fields[index], fields[changeIndex]);
+		PuzzleField blankField = getBlankField();
+		PuzzleField anotherField = null;
+		int counter = (int) Math.pow(columns * rows, 2);
+		while (0 < counter) {
+			anotherField = fields[random.nextInt(columns * rows)];
+			
+			if (areFieldsNeighbours(blankField, anotherField)) {
+				changeFields(blankField, anotherField);
+				blankField = anotherField;
+				counter--;
+			}
 		}
 	}
 
@@ -66,7 +75,8 @@ public class PuzzleBoard extends GridPane {
 
 		for (int row = 0; row < rows; row++) {
 			for (int column = 0; column < columns; column++) {
-				PuzzleField field = new PuzzleField(image, row * rows + column, column, row, fieldWidth, fieldHeight);
+				PuzzleField field = new PuzzleField(image, row * rows + column,
+						column, row, fieldWidth, fieldHeight);
 				fields[row * rows + column] = field;
 				super.add(field, column, row);
 
@@ -98,11 +108,13 @@ public class PuzzleBoard extends GridPane {
 			}
 
 			if (isBoardSorted()) {
-				fields[fields.length - 1].setColumnAndRow(columns - 1, rows - 1);
+				fields[fields.length - 1]
+						.setColumnAndRow(columns - 1, rows - 1);
 			}
 		}
 	}
 
+	//To arrange a solvable puzzle, need to change neighboring fields with the blank field
 	private void changeFields(PuzzleField field1, PuzzleField field2) {
 		int tempColumn = field1.getColumn();
 		int tempRow = field1.getRow();
@@ -111,10 +123,10 @@ public class PuzzleBoard extends GridPane {
 	}
 
 	private boolean isBoardSorted() {
-		// Don't check the last field because it might be set to -1, -1
 		for (int index = 0; index < fields.length - 1; index++) {
 			PuzzleField field = fields[index];
-			if (field.getSerialNumber() != field.getRow() * columns + field.getColumn()) {
+			if (field.getSerialNumber() != field.getRow() * columns
+					+ field.getColumn()) {
 				return false;
 			}
 		}
@@ -135,6 +147,13 @@ public class PuzzleBoard extends GridPane {
 	}
 
 	private boolean areFieldsNeighbours(PuzzleField field1, PuzzleField field2) {
-		return true;
+		if (Math.abs(field1.getSerialNumber() - field2.getSerialNumber()) == columns) {
+			return true;
+		} else if (Math.abs(field1.getSerialNumber() - field2.getSerialNumber()) == 1
+				&& field1.getSerialNumber() / columns == field2.getSerialNumber() / columns) {
+			return true;
+		}
+		
+		return false;
 	}
 }
