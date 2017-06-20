@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<GridPane id="mainPane" fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="310.0" prefWidth="460.0" style="-fx-background-color: #eeeec3;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isscassistant.ISSCAssistantController">
+<GridPane id="mainPane" fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="310.0" prefWidth="470.0" style="-fx-background-color: #eeeec3;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isscassistant.ISSCAssistantController">
 	<columnConstraints>
 		<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
 		<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
@@ -38,11 +38,6 @@
 		<RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
 	</rowConstraints>
 	<children>
-		<DatePicker id="pickerFirstDay" fx:id="pickerFirstDay" maxWidth="1.7976931348623157E308" prefHeight="22.0" prefWidth="108.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-			<GridPane.margin>
-				<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-			</GridPane.margin>
-		</DatePicker>
 		<Label id="text1" fx:id="text1" text="First sick day" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
 			<font>
 				<Font name="Arial" size="14.0" />
@@ -51,16 +46,11 @@
 				<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 			</GridPane.margin>
 		</Label>
-		<TextField id="textFieldCSP" fx:id="textFieldCSP" onAction="#onTextFieldCSPChanged" GridPane.columnIndex="3">
+		<DatePicker id="pickerFirstDay" fx:id="pickerFirstDay" maxWidth="1.7976931348623157E308" prefHeight="22.0" prefWidth="108.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
 			<GridPane.margin>
 				<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 			</GridPane.margin>
-		</TextField>
-		<TextField id="textFieldSSP" fx:id="textFieldSSP" GridPane.columnIndex="3" GridPane.rowIndex="1">
-			<GridPane.margin>
-				<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-			</GridPane.margin>
-		</TextField>
+		</DatePicker>
 		<Label id="text2" fx:id="text2" maxWidth="1.7976931348623157E308" text="Available CSP days" textAlignment="RIGHT" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2">
 			<font>
 				<Font name="Arial" size="14.0" />
@@ -69,6 +59,11 @@
 				<Insets bottom="5.0" left="5.0" right="10.0" top="5.0" />
 			</GridPane.margin>
 		</Label>
+		<TextField id="textFieldCSP" fx:id="textFieldCSP" GridPane.columnIndex="3">
+			<GridPane.margin>
+				<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+			</GridPane.margin>
+		</TextField>
 		<Label id="text3" fx:id="text3" text="Available SSP days" textAlignment="RIGHT" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
 			<font>
 				<Font name="Arial" size="14.0" />
@@ -77,6 +72,11 @@
 				<Insets bottom="5.0" left="5.0" right="10.0" top="5.0" />
 			</GridPane.margin>
 		</Label>
+		<TextField id="textFieldSSP" fx:id="textFieldSSP" GridPane.columnIndex="3" GridPane.rowIndex="1">
+			<GridPane.margin>
+				<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+			</GridPane.margin>
+		</TextField>
 		<ImageView id="pictureSick" fx:id="pictureSick" fitHeight="127.0" fitWidth="163.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowSpan="3" GridPane.valignment="CENTER">
 			<image>
 				<Image url="@../../../res/Sickness.png" />
@@ -85,6 +85,14 @@
 				<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
 			</GridPane.margin>
 		</ImageView>
+		<Button id="buttonTwoWeek" fx:id="buttonTwoWeek" accessibleRole="CHECK_BOX" mnemonicParsing="false" onAction="#on2WeekScheduleButtonAction" text="2 week schedule" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+			<GridPane.margin>
+				<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+			</GridPane.margin>
+			<font>
+				<Font size="11.0" />
+			</font>
+		</Button>
 		<Label id="text4" fx:id="text4" text="Working days" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
 			<font>
 				<Font name="Arial" size="14.0" />
@@ -128,28 +136,6 @@
 				<Font name="Arial" size="11.0" />
 			</font>
 		</Label>
-		<Button id="buttonTwoWeek" fx:id="buttonTwoWeek" accessibleRole="CHECK_BOX" mnemonicParsing="false" text="2 week schedule" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
-			<GridPane.margin>
-				<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-			</GridPane.margin>
-			<font>
-				<Font size="11.0" />
-			</font>
-		</Button>
-		<CheckBox id="checkMA" fx:id="checkMA" mnemonicParsing="false" selected="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-		<CheckBox id="checkTuA" fx:id="checkTuA" mnemonicParsing="false" selected="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-		<CheckBox id="checkWA" fx:id="checkWA" mnemonicParsing="false" selected="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-		<CheckBox id="checkThA" fx:id="checkThA" mnemonicParsing="false" selected="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-		<CheckBox id="checkFA" fx:id="checkFA" mnemonicParsing="false" selected="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-		<CheckBox id="checkMB" fx:id="checkMB" disable="true" mnemonicParsing="false" selected="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
-		<CheckBox id="checkTuB" fx:id="checkTuB" disable="true" mnemonicParsing="false" selected="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
-		<CheckBox id="checkWB" fx:id="checkWB" disable="true" mnemonicParsing="false" selected="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
-		<CheckBox id="checkThB" fx:id="checkThB" disable="true" mnemonicParsing="false" selected="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
-		<CheckBox id="checkFB" fx:id="checkFB" disable="true" mnemonicParsing="false" selected="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
-		<CheckBox id="checkSaA" fx:id="checkSaA" mnemonicParsing="false" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-		<CheckBox id="checkSuA" fx:id="checkSuA" mnemonicParsing="false" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-		<CheckBox id="checkSaB" fx:id="checkSaB" disable="true" mnemonicParsing="false" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
-		<CheckBox id="checkSuB" fx:id="checkSuB" disable="true" mnemonicParsing="false" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
 		<Label id="textWeekB" fx:id="textWeekB" disable="true" text="B week (9-15 Jan. 2017)" textAlignment="RIGHT" wrapText="true" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
 			<font>
 				<Font name="Arial Italic" size="11.0" />
@@ -158,12 +144,27 @@
 				<Insets />
 			</GridPane.margin>
 		</Label>
+		<CheckBox id="checkMA" fx:id="checkMA" mnemonicParsing="false" selected="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+		<CheckBox id="checkTuA" fx:id="checkTuA" mnemonicParsing="false" selected="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+		<CheckBox id="checkWA" fx:id="checkWA" mnemonicParsing="false" selected="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+		<CheckBox id="checkThA" fx:id="checkThA" mnemonicParsing="false" selected="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+		<CheckBox id="checkFA" fx:id="checkFA" mnemonicParsing="false" selected="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+		<CheckBox id="checkSaA" fx:id="checkSaA" mnemonicParsing="false" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+		<CheckBox id="checkSuA" fx:id="checkSuA" mnemonicParsing="false" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
 		<Label id="textWeekA" fx:id="textWeekA" alignment="CENTER_RIGHT" disable="true" text="A week (2-8 Jan. 2017)" textAlignment="RIGHT" wrapText="true" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
 			<font>
 				<Font name="Arial Italic" size="11.0" />
 			</font>
 		</Label>
-		<Button id="buttonCalculate" fx:id="buttonCalculate" mnemonicParsing="false" style="-fx-background-color: #dddd88; -fx-border-color: #999999;" text="Calculate" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+		<CheckBox id="checkMB" fx:id="checkMB" disable="true" mnemonicParsing="false" selected="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+		<CheckBox id="checkTuB" fx:id="checkTuB" disable="true" mnemonicParsing="false" selected="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+		<CheckBox id="checkWB" fx:id="checkWB" disable="true" mnemonicParsing="false" selected="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+		<CheckBox id="checkThB" fx:id="checkThB" disable="true" mnemonicParsing="false" selected="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+		<CheckBox id="checkFB" fx:id="checkFB" disable="true" mnemonicParsing="false" selected="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+		<CheckBox id="checkSaB" fx:id="checkSaB" disable="true" mnemonicParsing="false" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+		<CheckBox id="checkSuB" fx:id="checkSuB" disable="true" mnemonicParsing="false" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+		<Line id="lineBottom" fx:id="lineBottom" endX="350.0" startX="-100.0" stroke="#999999" GridPane.columnSpan="7" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
+		<Button id="buttonCalculate" fx:id="buttonCalculate" mnemonicParsing="false" onAction="#onCalculateButtonAction" style="-fx-background-color: #dddd88; -fx-border-color: #999999;" text="Calculate" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.rowSpan="2" GridPane.valignment="CENTER">
 			<font>
 				<Font name="Arial" size="14.0" />
 			</font>
@@ -171,13 +172,7 @@
 				<DropShadow color="#999999" height="10.0" offsetX="2.0" offsetY="2.0" radius="4.5" width="10.0" />
 			</effect>
 		</Button>
-		<Line id="lineBottom" fx:id="lineBottom" endX="350.0" startX="-100.0" stroke="#999999" GridPane.columnSpan="7" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
 		<Label id="text5" fx:id="text5" text="Last day on CSP:" textAlignment="RIGHT" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="7">
-			<font>
-				<Font name="Arial" size="14.0" />
-			</font>
-		</Label>
-		<Label id="text6" fx:id="text6" text="Last day on SSP:" textAlignment="RIGHT" wrapText="true" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="7">
 			<font>
 				<Font name="Arial" size="14.0" />
 			</font>
@@ -187,12 +182,17 @@
 				<Font name="Arial" size="14.0" />
 			</font>
 		</Label>
+		<Label id="text6" fx:id="text6" text="Last day on SSP:" textAlignment="RIGHT" wrapText="true" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+			<font>
+				<Font name="Arial" size="14.0" />
+			</font>
+		</Label>
 		<Label id="textDateSSP" fx:id="textDateSSP" disable="true" text="12.12. 2012" textAlignment="CENTER" underline="true" wrapText="true" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="8">
 			<font>
 				<Font name="Arial" size="14.0" />
 			</font>
 		</Label>
-		<Button id="buttonExit" fx:id="buttonExit" mnemonicParsing="false" style="-fx-background-color: #dddd88; -fx-border-color: #999999;" text="Exit" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+		<Button id="buttonExit" fx:id="buttonExit" mnemonicParsing="false" onAction="#onExitButtonAction" style="-fx-background-color: #dddd88; -fx-border-color: #999999;" text="Exit" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.rowSpan="2" GridPane.valignment="CENTER">
 			<GridPane.margin>
 				<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 			</GridPane.margin>
