@@ -3,7 +3,6 @@ package com.isscassistant;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -149,6 +148,7 @@ public class ISSCAssistantController implements Initializable {
 	@FXML
 	private Label textCreators;
 
+	//Õ itt lefordítja a work schedule-öket egy integer kódba:
 	public int workScheduleA() {
 		int number = 0;
 		if (checkMA.isSelected()) {
@@ -219,6 +219,7 @@ public class ISSCAssistantController implements Initializable {
 		checkSuB.setDisable(!checkSuB.isDisabled());
 		textWeekA.setVisible(!textWeekA.isVisible());
 		textWeekB.setVisible(!textWeekB.isVisible());
+		//A "B" work schedule hasonul az "A"-val ki-be kapcsolgatás során:
 		checkMB.setSelected(checkMA.isSelected());
 		checkTuB.setSelected(checkTuA.isSelected());
 		checkWB.setSelected(checkWA.isSelected());
@@ -317,10 +318,11 @@ public class ISSCAssistantController implements Initializable {
 		// metódusban lévõ listener gondoskodik a valós értékrõl
 		// - availableSSPDays: alapértelmezetten 0, egyébként a initialize
 		// metódusban lévõ listener gondoskodik a valós értékrõl
+		
 		textDateCSP.setText(dayCalculator
 				.calculateLastCSPDay(firstDay, availableCSPDays, workScheduleA(), workScheduleB()).toString());
 		textDateSSP.setText(dayCalculator
-				.caclulateLastSSPDay(SSPDay, availableSSPDays, workScheduleA(), workScheduleB()).toString());
+				.calculateLastSSPDay(firstDay, SSPDay, availableSSPDays, workScheduleA(), workScheduleB()).toString());
 	}
 
 	@FXML
@@ -363,11 +365,13 @@ public class ISSCAssistantController implements Initializable {
 				textFieldCSP.textProperty().setValue(oldValue);
 			}
 		});
+		
 		setWeeks();
+		
 		textDateCSP.setText(
 				dayCalculator.calculateLastCSPDay(LocalDate.now(), 0, workScheduleA(), workScheduleB()).toString());
 		textDateSSP.setText(
-				dayCalculator.caclulateLastSSPDay(LocalDate.now(), 0, workScheduleA(), workScheduleB()).toString());
+				dayCalculator.calculateLastSSPDay(LocalDate.now(), LocalDate.now(), 0, workScheduleA(), workScheduleB()).toString());
 	}
 
 	// Külön metódusban vizsgálom meg, hogy az új szöveg "napok számának" néz-e
