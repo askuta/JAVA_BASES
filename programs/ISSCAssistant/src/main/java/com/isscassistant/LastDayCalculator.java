@@ -1,6 +1,7 @@
 package com.isscassistant;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 public class LastDayCalculator {
 
@@ -9,9 +10,11 @@ public class LastDayCalculator {
 		return calculateLastDay(firstDay, availableCSPDays, workScheduleA, workScheduleB, 0);
 	}
 
-	public LocalDate calculateLastSSPDay(LocalDate firstDay, LocalDate SSPDay, int availableSSPDays, int workScheduleA, int workScheduleB) {
-		
-		//Ez itt kiszámolja a CSP és SSP kezdõdátumai közé esõ hétfordulók számát:
+	public LocalDate calculateLastSSPDay(LocalDate firstDay, LocalDate SSPDay, int availableSSPDays, int workScheduleA,
+			int workScheduleB) {
+
+		// Ez itt kiszámolja a CSP és SSP kezdõdátumai közé esõ hétfordulók
+		// számát:
 		int linkingWeekTurns = 0;
 		LocalDate SSPDayCounter = SSPDay;
 		while (!SSPDayCounter.equals(firstDay)) {
@@ -20,15 +23,17 @@ public class LastDayCalculator {
 				linkingWeekTurns++;
 			}
 		}
-		
+
 		return calculateLastDay(SSPDay, availableSSPDays, workScheduleA, workScheduleB, linkingWeekTurns);
 	}
 
-	private LocalDate calculateLastDay(LocalDate firstDay, int availableDays, int workScheduleA, int workScheduleB, int linkingWeekTurns) {
+	private LocalDate calculateLastDay(LocalDate firstDay, int availableDays, int workScheduleA, int workScheduleB,
+			int linkingWeekTurns) {
 		LocalDate lastDate = firstDay;
 		int daysSpent = 1;
 		boolean isBWeek = false;
-		//Ez itt kiszámolja a hétfordulók számából, hogy "A" vagy "B" schedule-rõl indul-e a linking periódus:
+		// Ez itt kiszámolja a hétfordulók számából, hogy "A" vagy "B"
+		// schedule-rõl indul-e a linking periódus:
 		if ((linkingWeekTurns & 1) != 0) {
 			isBWeek = true;
 		}
@@ -113,7 +118,9 @@ public class LastDayCalculator {
 
 			// Következõ nap.
 			lastDate = lastDate.plusDays(1);
-						
+			
+			if (!isHoliday(lastDate)) {
+
 			// Kettébontjuk az "A" és "B" hét leszámolását.
 			if (isBWeek) {
 				// A következõ nap munkanap a "B" heti work schedule szerint? Ha
@@ -201,8 +208,8 @@ public class LastDayCalculator {
 				default:
 					break;
 				}
-			}
-			
+			}}
+
 			// Váltás "A" és "B" hét között.
 			if (lastDate.getDayOfWeek() == java.time.DayOfWeek.MONDAY) {
 				isBWeek = !isBWeek;
@@ -211,4 +218,20 @@ public class LastDayCalculator {
 		}
 		return lastDate;
 	}
+
+	private boolean isHoliday(LocalDate day) {
+		if (Arrays.asList(holidaysUK).contains(day)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	LocalDate[] holidaysUK = { LocalDate.of(2016, 1, 1), LocalDate.of(2016, 3, 25), LocalDate.of(2016, 3, 28),
+			LocalDate.of(2016, 5, 2), LocalDate.of(2016, 5, 30), LocalDate.of(2016, 8, 29), LocalDate.of(2016, 12, 26),
+			LocalDate.of(2016, 12, 27), LocalDate.of(2017, 1, 2), LocalDate.of(2017, 1, 2), LocalDate.of(2017, 4, 14),
+			LocalDate.of(2017, 4, 17), LocalDate.of(2017, 5, 1), LocalDate.of(2017, 5, 29), LocalDate.of(2017, 8, 28),
+			LocalDate.of(2017, 12, 25), LocalDate.of(2017, 12, 26), LocalDate.of(2018, 1, 1), LocalDate.of(2018, 3, 30),
+			LocalDate.of(2018, 4, 2), LocalDate.of(2018, 5, 7), LocalDate.of(2018, 5, 28), LocalDate.of(2018, 8, 27),
+			LocalDate.of(2018, 12, 25), LocalDate.of(2018, 12, 26) };
 }
