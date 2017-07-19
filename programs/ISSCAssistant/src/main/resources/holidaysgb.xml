@@ -1,0 +1,195 @@
+<ArrayOfPublicHoliday xmlns:i="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://schemas.datacontract.org/2004/07/Nager.Date.Website.Model">
+	<PublicHoliday>
+		<Counties xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+			<d3p1:string>GB-NIR</d3p1:string>
+		</Counties>
+		<CountryCode>GB</CountryCode>
+		<CountyAdministrationHoliday>true</CountyAdministrationHoliday>
+		<CountyOfficialHoliday>true</CountyOfficialHoliday>
+		<Date>2017-01-01</Date>
+		<Fixed>false</Fixed>
+		<Global>false</Global>
+		<LaunchYear i:nil="true" />
+		<LocalName>New Year's Day</LocalName>
+		<Name>New Year's Day</Name>
+	</PublicHoliday>
+	<PublicHoliday>
+		<Counties xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+			<d3p1:string>GB-ENG</d3p1:string>
+			<d3p1:string>GB-WLS</d3p1:string>
+		</Counties>
+		<CountryCode>GB</CountryCode>
+		<CountyAdministrationHoliday>true</CountyAdministrationHoliday>
+		<CountyOfficialHoliday>true</CountyOfficialHoliday>
+		<Date>2017-01-02</Date>
+		<Fixed>false</Fixed>
+		<Global>false</Global>
+		<LaunchYear i:nil="true" />
+		<LocalName>New Year's Day</LocalName>
+		<Name>New Year's Day</Name>
+	</PublicHoliday>
+	<PublicHoliday>
+		<Counties xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+			<d3p1:string>GB-SCT</d3p1:string>
+		</Counties>
+		<CountryCode>GB</CountryCode>
+		<CountyAdministrationHoliday>true</CountyAdministrationHoliday>
+		<CountyOfficialHoliday>true</CountyOfficialHoliday>
+		<Date>2017-01-02</Date>
+		<Fixed>false</Fixed>
+		<Global>false</Global>
+		<LaunchYear i:nil="true" />
+		<LocalName>New Year's Day</LocalName>
+		<Name>New Year's Day</Name>
+	</PublicHoliday>
+	<PublicHoliday>
+		<Counties xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+			<d3p1:string>GB-SCT</d3p1:string>
+		</Counties>
+		<CountryCode>GB</CountryCode>
+		<CountyAdministrationHoliday>true</CountyAdministrationHoliday>
+		<CountyOfficialHoliday>true</CountyOfficialHoliday>
+		<Date>2017-01-03</Date>
+		<Fixed>false</Fixed>
+		<Global>false</Global>
+		<LaunchYear i:nil="true" />
+		<LocalName>New Year's Day</LocalName>
+		<Name>New Year's Day</Name>
+	</PublicHoliday>
+	<PublicHoliday>
+		<Counties xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+			i:nil="true" />
+		<CountryCode>GB</CountryCode>
+		<CountyAdministrationHoliday>true</CountyAdministrationHoliday>
+		<CountyOfficialHoliday>true</CountyOfficialHoliday>
+		<Date>2017-04-14</Date>
+		<Fixed>false</Fixed>
+		<Global>true</Global>
+		<LaunchYear i:nil="true" />
+		<LocalName>Good Friday</LocalName>
+		<Name>Good Friday</Name>
+	</PublicHoliday>
+	<PublicHoliday>
+		<Counties xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+			i:nil="true" />
+		<CountryCode>GB</CountryCode>
+		<CountyAdministrationHoliday>true</CountyAdministrationHoliday>
+		<CountyOfficialHoliday>true</CountyOfficialHoliday>
+		<Date>2017-04-17</Date>
+		<Fixed>false</Fixed>
+		<Global>true</Global>
+		<LaunchYear i:nil="true" />
+		<LocalName>Easter Monday</LocalName>
+		<Name>Easter Monday</Name>
+	</PublicHoliday>
+	<PublicHoliday>
+		<Counties xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+			i:nil="true" />
+		<CountryCode>GB</CountryCode>
+		<CountyAdministrationHoliday>true</CountyAdministrationHoliday>
+		<CountyOfficialHoliday>true</CountyOfficialHoliday>
+		<Date>2017-05-01</Date>
+		<Fixed>true</Fixed>
+		<Global>true</Global>
+		<LaunchYear>1978</LaunchYear>
+		<LocalName>Early May Bank Holiday</LocalName>
+		<Name>Early May Bank Holiday</Name>
+	</PublicHoliday>
+	<PublicHoliday>
+		<Counties xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+			i:nil="true" />
+		<CountryCode>GB</CountryCode>
+		<CountyAdministrationHoliday>true</CountyAdministrationHoliday>
+		<CountyOfficialHoliday>true</CountyOfficialHoliday>
+		<Date>2017-05-29</Date>
+		<Fixed>true</Fixed>
+		<Global>true</Global>
+		<LaunchYear>1971</LaunchYear>
+		<LocalName>Spring Bank Holiday</LocalName>
+		<Name>Spring Bank Holiday</Name>
+	</PublicHoliday>
+	<PublicHoliday>
+		<Counties xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+			<d3p1:string>GB-NIR</d3p1:string>
+		</Counties>
+		<CountryCode>GB</CountryCode>
+		<CountyAdministrationHoliday>true</CountyAdministrationHoliday>
+		<CountyOfficialHoliday>true</CountyOfficialHoliday>
+		<Date>2017-07-12</Date>
+		<Fixed>true</Fixed>
+		<Global>false</Global>
+		<LaunchYear i:nil="true" />
+		<LocalName>Saint Patrick's Day</LocalName>
+		<Name>Saint Patrick's Day</Name>
+	</PublicHoliday>
+	<PublicHoliday>
+		<Counties xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+			<d3p1:string>GB-NIR</d3p1:string>
+		</Counties>
+		<CountryCode>GB</CountryCode>
+		<CountyAdministrationHoliday>true</CountyAdministrationHoliday>
+		<CountyOfficialHoliday>true</CountyOfficialHoliday>
+		<Date>2017-07-12</Date>
+		<Fixed>true</Fixed>
+		<Global>false</Global>
+		<LaunchYear i:nil="true" />
+		<LocalName>Battle of the Boyne</LocalName>
+		<Name>Battle of the Boyne</Name>
+	</PublicHoliday>
+	<PublicHoliday>
+		<Counties xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+			<d3p1:string>GB-SCT</d3p1:string>
+		</Counties>
+		<CountryCode>GB</CountryCode>
+		<CountyAdministrationHoliday>true</CountyAdministrationHoliday>
+		<CountyOfficialHoliday>true</CountyOfficialHoliday>
+		<Date>2017-08-07</Date>
+		<Fixed>true</Fixed>
+		<Global>false</Global>
+		<LaunchYear>1971</LaunchYear>
+		<LocalName>Summer Bank Holiday</LocalName>
+		<Name>Summer Bank Holiday</Name>
+	</PublicHoliday>
+	<PublicHoliday>
+		<Counties xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+			<d3p1:string>GB-ENG</d3p1:string>
+			<d3p1:string>GB-WLS</d3p1:string>
+		</Counties>
+		<CountryCode>GB</CountryCode>
+		<CountyAdministrationHoliday>true</CountyAdministrationHoliday>
+		<CountyOfficialHoliday>true</CountyOfficialHoliday>
+		<Date>2017-08-28</Date>
+		<Fixed>true</Fixed>
+		<Global>false</Global>
+		<LaunchYear>1971</LaunchYear>
+		<LocalName>Summer Bank Holiday</LocalName>
+		<Name>Summer Bank Holiday</Name>
+	</PublicHoliday>
+	<PublicHoliday>
+		<Counties xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+			i:nil="true" />
+		<CountryCode>GB</CountryCode>
+		<CountyAdministrationHoliday>true</CountyAdministrationHoliday>
+		<CountyOfficialHoliday>true</CountyOfficialHoliday>
+		<Date>2017-12-25</Date>
+		<Fixed>false</Fixed>
+		<Global>true</Global>
+		<LaunchYear i:nil="true" />
+		<LocalName>Christmas Day</LocalName>
+		<Name>Christmas Day</Name>
+	</PublicHoliday>
+	<PublicHoliday>
+		<Counties xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+			i:nil="true" />
+		<CountryCode>GB</CountryCode>
+		<CountyAdministrationHoliday>true</CountyAdministrationHoliday>
+		<CountyOfficialHoliday>true</CountyOfficialHoliday>
+		<Date>2017-12-26</Date>
+		<Fixed>false</Fixed>
+		<Global>true</Global>
+		<LaunchYear i:nil="true" />
+		<LocalName>Boxing Day</LocalName>
+		<Name>St. Stephen's Day</Name>
+	</PublicHoliday>
+</ArrayOfPublicHoliday>
