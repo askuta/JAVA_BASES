@@ -3,7 +3,7 @@ package com.isscassistant;
 import java.time.LocalDate;
 import java.util.Arrays;
 
-public class LastDayCalculator {
+public class LastDayCalculatorTemp {
 
 	public LocalDate calculateLastCSPDay(LocalDate firstDay, int availableCSPDays, int workScheduleA,
 			int workScheduleB) {
@@ -118,97 +118,100 @@ public class LastDayCalculator {
 
 			// Következõ nap.
 			lastDate = lastDate.plusDays(1);
-			
+
 			if (!isHoliday(lastDate)) {
 
-			// Kettébontjuk az "A" és "B" hét leszámolását.
-			if (isBWeek) {
-				// A következõ nap munkanap a "B" heti work schedule szerint? Ha
-				// igen,
-				// akkor növelem a daysSpent értékét:
-				switch (lastDate.getDayOfWeek()) {
-				case MONDAY:
-					if (workdayMB) {
-						daysSpent += 1;
+				// Kettébontjuk az "A" és "B" hét leszámolását.
+				if (isBWeek) {
+					// A következõ nap munkanap a "B" heti work schedule
+					// szerint? Ha
+					// igen,
+					// akkor növelem a daysSpent értékét:
+					switch (lastDate.getDayOfWeek()) {
+					case MONDAY:
+						if (workdayMB) {
+							daysSpent += 1;
+							break;
+						}
+					case TUESDAY:
+						if (workdayTuB) {
+							daysSpent += 1;
+							break;
+						}
+					case WEDNESDAY:
+						if (workdayWB) {
+							daysSpent += 1;
+							break;
+						}
+					case THURSDAY:
+						if (workdayThB) {
+							daysSpent += 1;
+							break;
+						}
+					case FRIDAY:
+						if (workdayFB) {
+							daysSpent += 1;
+							break;
+						}
+					case SATURDAY:
+						if (workdaySaB) {
+							daysSpent += 1;
+							break;
+						}
+					case SUNDAY:
+						if (workdaySuB) {
+							daysSpent += 1;
+							break;
+						}
+					default:
 						break;
 					}
-				case TUESDAY:
-					if (workdayTuB) {
-						daysSpent += 1;
+				} else {
+					// A következõ nap munkanap az "A" heti work schedule
+					// szerint?
+					// Ha igen,
+					// akkor növelem a daysSpent értékét:
+					switch (lastDate.getDayOfWeek()) {
+					case MONDAY:
+						if (workdayMA) {
+							daysSpent += 1;
+							break;
+						}
+					case TUESDAY:
+						if (workdayTuA) {
+							daysSpent += 1;
+							break;
+						}
+					case WEDNESDAY:
+						if (workdayWA) {
+							daysSpent += 1;
+							break;
+						}
+					case THURSDAY:
+						if (workdayThA) {
+							daysSpent += 1;
+							break;
+						}
+					case FRIDAY:
+						if (workdayFA) {
+							daysSpent += 1;
+							break;
+						}
+					case SATURDAY:
+						if (workdaySaA) {
+							daysSpent += 1;
+							break;
+						}
+					case SUNDAY:
+						if (workdaySuA) {
+							daysSpent += 1;
+							break;
+						}
+					default:
 						break;
 					}
-				case WEDNESDAY:
-					if (workdayWB) {
-						daysSpent += 1;
-						break;
-					}
-				case THURSDAY:
-					if (workdayThB) {
-						daysSpent += 1;
-						break;
-					}
-				case FRIDAY:
-					if (workdayFB) {
-						daysSpent += 1;
-						break;
-					}
-				case SATURDAY:
-					if (workdaySaB) {
-						daysSpent += 1;
-						break;
-					}
-				case SUNDAY:
-					if (workdaySuB) {
-						daysSpent += 1;
-						break;
-					}
-				default:
-					break;
 				}
-			} else {
-				// A következõ nap munkanap az "A" heti work schedule szerint?
-				// Ha igen,
-				// akkor növelem a daysSpent értékét:
-				switch (lastDate.getDayOfWeek()) {
-				case MONDAY:
-					if (workdayMA) {
-						daysSpent += 1;
-						break;
-					}
-				case TUESDAY:
-					if (workdayTuA) {
-						daysSpent += 1;
-						break;
-					}
-				case WEDNESDAY:
-					if (workdayWA) {
-						daysSpent += 1;
-						break;
-					}
-				case THURSDAY:
-					if (workdayThA) {
-						daysSpent += 1;
-						break;
-					}
-				case FRIDAY:
-					if (workdayFA) {
-						daysSpent += 1;
-						break;
-					}
-				case SATURDAY:
-					if (workdaySaA) {
-						daysSpent += 1;
-						break;
-					}
-				case SUNDAY:
-					if (workdaySuA) {
-						daysSpent += 1;
-						break;
-					}
-				default:
-					break;
-				}
-			}}
+			}
 
 			// Váltás "A" és "B" hét között.
 			if (lastDate.getDayOfWeek() == java.time.DayOfWeek.MONDAY) {
@@ -229,9 +232,9 @@ public class LastDayCalculator {
 
 	LocalDate[] holidaysUK = { LocalDate.of(2016, 1, 1), LocalDate.of(2016, 3, 25), LocalDate.of(2016, 3, 28),
 			LocalDate.of(2016, 5, 2), LocalDate.of(2016, 5, 30), LocalDate.of(2016, 8, 29), LocalDate.of(2016, 12, 26),
-			LocalDate.of(2016, 12, 27), LocalDate.of(2017, 1, 2), LocalDate.of(2017, 1, 2), LocalDate.of(2017, 4, 14),
-			LocalDate.of(2017, 4, 17), LocalDate.of(2017, 5, 1), LocalDate.of(2017, 5, 29), LocalDate.of(2017, 8, 28),
-			LocalDate.of(2017, 12, 25), LocalDate.of(2017, 12, 26), LocalDate.of(2018, 1, 1), LocalDate.of(2018, 3, 30),
-			LocalDate.of(2018, 4, 2), LocalDate.of(2018, 5, 7), LocalDate.of(2018, 5, 28), LocalDate.of(2018, 8, 27),
-			LocalDate.of(2018, 12, 25), LocalDate.of(2018, 12, 26) };
+			LocalDate.of(2016, 12, 27), LocalDate.of(2017, 1, 2), LocalDate.of(2017, 4, 14), LocalDate.of(2017, 4, 17),
+			LocalDate.of(2017, 5, 1), LocalDate.of(2017, 5, 29), LocalDate.of(2017, 8, 28), LocalDate.of(2017, 12, 25),
+			LocalDate.of(2017, 12, 26), LocalDate.of(2018, 1, 1), LocalDate.of(2018, 3, 30), LocalDate.of(2018, 4, 2),
+			LocalDate.of(2018, 5, 7), LocalDate.of(2018, 5, 28), LocalDate.of(2018, 8, 27), LocalDate.of(2018, 12, 25),
+			LocalDate.of(2018, 12, 26) };
 }
