@@ -152,11 +152,8 @@ public class ISSCAssistantController implements Initializable {
 
 	@FXML
 	void on2WeekScheduleButtonAction(ActionEvent event) {
-		// Ez a metósud akkor hívódik meg, ha a "2 week schedule"
-		// gombra kattintasz egérrel vagy entert nyomsz rá.
-
-		// A második checkbox sor gombjainak a disabled státuszát
-		// átállítom a jelenlegi státuszuk ellentétére.
+		// A második checkbox sor gombjainak a disabled státusza
+		// átvált a jelenlegi státuszuk ellentétére:
 		checkMB.setDisable(!checkMB.isDisabled());
 		checkTuB.setDisable(!checkTuB.isDisabled());
 		checkWB.setDisable(!checkWB.isDisabled());
@@ -178,8 +175,6 @@ public class ISSCAssistantController implements Initializable {
 
 	@FXML
 	void onLinkingButtonAction(ActionEvent event) {
-		// Ez a metódus akkor hívódik meg, ha a "Linking"
-		// gombra kattintasz egérrel vagy entert nyomsz rá.
 		pickerSSPDay.setDisable(!pickerSSPDay.isDisabled());
 		pickerSSPDay.setValue(pickerFirstDay.getValue());
 	}
@@ -188,18 +183,15 @@ public class ISSCAssistantController implements Initializable {
 	void onCalculateButtonAction(ActionEvent event) {
 		// Az elsõ nap lekérdezése a datepicker-tõl:
 		LocalDate firstDay = pickerFirstDay.getValue();
-		// Az SSP elsõ napja legyen a saját datepicker-e szerint, kivéve ha ki
-		// van kapcsolva.
-		// Ekkor változzon a datepicker a normál elsõ napra, és legyen aszerint
-		// a dátum.
+		// ha a pickerSSPDay ki van kapcsolva, változzon a datepicker a normál
+		// elsõ napra, és legyen aszerint a dátum:
 		if (pickerSSPDay.isDisabled()) {
 			pickerSSPDay.setValue(pickerFirstDay.getValue());
 		}
 		LocalDate SSPDay = pickerSSPDay.getValue();
 
 		// availableCSPDays legyen alapból 0, de ha a megfelelõ textfieldnek van
-		// értelmes
-		// értéke, akkor azzal felülírjuk.
+		// értelmes értéke, akkor azzal felülírjuk:
 		int availableCSPDays = 0;
 		if (textFieldCSP.getText() != null && textFieldCSP.getText().length() != 0) {
 			availableCSPDays = Integer.valueOf(textFieldCSP.getText());
@@ -209,59 +201,29 @@ public class ISSCAssistantController implements Initializable {
 		// kéthetes kiszerelésben:
 		boolean[] workSchedule;
 		if (buttonTwoWeek.isPressed()) {
-			workSchedule = new boolean[13];
+			workSchedule = new boolean[14];
 		} else {
-			workSchedule = new boolean[6];
+			workSchedule = new boolean[7];
 		}
 
-		if (checkMA.isSelected()) {
-			workSchedule[0] = true;
-		}
-		if (checkTuA.isSelected()) {
-			workSchedule[1] = true;
-		}
-		if (checkWA.isSelected()) {
-			workSchedule[2] = true;
-		}
-		if (checkThA.isSelected()) {
-			workSchedule[3] = true;
-		}
-		if (checkFA.isSelected()) {
-			workSchedule[4] = true;
-		}
-		if (checkSaA.isSelected()) {
-			workSchedule[5] = true;
-		}
-		if (checkSuA.isSelected()) {
-			workSchedule[6] = true;
-		}
+		workSchedule[0] = checkMA.isSelected();
+		workSchedule[1] = checkTuA.isSelected();
+		workSchedule[2] = checkWA.isSelected();
+		workSchedule[3] = checkThA.isSelected();
+		workSchedule[4] = checkFA.isSelected();
+		workSchedule[5] = checkSaA.isSelected();
+		workSchedule[6] = checkSuA.isSelected();
+
 		if (buttonTwoWeek.isPressed()) {
-			if (checkMB.isSelected()) {
-				workSchedule[7] = true;
-			}
-			if (checkTuB.isSelected()) {
-				workSchedule[8] = true;
-			}
-			if (checkWB.isSelected()) {
-				workSchedule[9] = true;
-			}
-			if (checkThB.isSelected()) {
-				workSchedule[10] = true;
-			}
-			if (checkFB.isSelected()) {
-				workSchedule[11] = true;
-			}
-			if (checkSaB.isSelected()) {
-				workSchedule[12] = true;
-			}
-			if (checkSuB.isSelected()) {
-				workSchedule[13] = true;
-			}
+			workSchedule[7] = checkMB.isSelected();
+			workSchedule[8] = checkTuB.isSelected();
+			workSchedule[9] = checkWB.isSelected();
+			workSchedule[10] = checkThB.isSelected();
+			workSchedule[11] = checkFB.isSelected();
+			workSchedule[12] = checkSaB.isSelected();
+			workSchedule[13] = checkSuB.isSelected();
 		}
 
-		//Tesztelés:
-		System.out.print(workSchedule);
-		
 		// availableSSPDays kiszámolása a két work schedule átlaga alapján.
 		int availableSSPDays = 0;
 		for (int index = 0; index < workSchedule.length; index++) {
@@ -269,24 +231,22 @@ public class ISSCAssistantController implements Initializable {
 				availableSSPDays += 1;
 			}
 		}
+		availableSSPDays = ((availableSSPDays / (workSchedule.length / 7)) * 28 + 3);
 
-		availableSSPDays = ((availableSSPDays / ((workSchedule.length + 1) / 7)) * 28 + 3);
-
-		// Külön osztályba, a LastDayCalculator-ba szerveztem a napok
-		// számolgatását.
-		// Ezen a ponton minden szükséges változóban valamennyire értelmes érték
-		// van:
+		// A LastDayCalculator-ba végzi a napok számolgatását:
 		// - firstDay: alapértelmezetten a mai nap, egyébként a datepicker
 		// gondoskodik a valós értékrõl
 		// - availableCSPDays: alapértelmezetten 0, egyébként a initialize
 		// metódusban lévõ listener gondoskodik a valós értékrõl
 		// - availableSSPDays: alapértelmezetten 0, egyébként a initialize
 		// metódusban lévõ listener gondoskodik a valós értékrõl
-
-		textDateCSP.setText(dayCalculator
-				.calculateLastCSPDay(firstDay, availableCSPDays, workSchedule).toString());
-		textDateSSP.setText(dayCalculator
-				.calculateLastSSPDay(firstDay, SSPDay, availableSSPDays, workSchedule).toString());
+		// A kalkuláció csak akkor fut le, ha van CSP entitlement, és a work
+		// schedule se üres (ha üres lenne, az SSP entitlement is 0 lenne):
+		if (availableSSPDays != 0 && availableCSPDays != 0) {
+			textDateCSP.setText(dayCalculator.calculateLastCSPDay(firstDay, availableCSPDays, workSchedule).toString());
+			textDateSSP.setText(
+					dayCalculator.calculateLastSSPDay(firstDay, SSPDay, availableSSPDays, workSchedule).toString());
+		}
 	}
 
 	@FXML
@@ -332,15 +292,12 @@ public class ISSCAssistantController implements Initializable {
 
 		setWeeks();
 
-		boolean[] initWorkSchedule = {true, true, true, true, true, false, false};
-		textDateCSP.setText(
-				dayCalculator.calculateLastCSPDay(LocalDate.now(), 0, initWorkSchedule).toString());
-		textDateSSP.setText(dayCalculator
-				.calculateLastSSPDay(LocalDate.now(), LocalDate.now(), 0, initWorkSchedule).toString());
+		boolean[] initWorkSchedule = { true, true, true, true, true, false, false };
+		textDateCSP.setText(dayCalculator.calculateLastCSPDay(LocalDate.now(), 0, initWorkSchedule).toString());
+		textDateSSP.setText(
+				dayCalculator.calculateLastSSPDay(LocalDate.now(), LocalDate.now(), 0, initWorkSchedule).toString());
 	}
 
-	// Külön metódusban vizsgálom meg, hogy az új szöveg "napok számának" néz-e
-	// ki.
 	private boolean isStringValidAsDays(String str) {
 		if (str.matches("\\d*") && str.length() < 4) {
 			return true;

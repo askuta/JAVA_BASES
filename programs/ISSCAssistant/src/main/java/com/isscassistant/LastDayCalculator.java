@@ -27,29 +27,26 @@ public class LastDayCalculator {
 	}
 
 	private LocalDate calculateLastDay(LocalDate firstDay, int availableDays, boolean[] workSchedule) {
-		//Ezt most nem értem, hogy mi. :/
-		//int offset = firstDay.getDayOfWeek().getValue()-1;
-		//offset = offset % workSchedule.length;
-		
+
 		LocalDate lastDate = firstDay;
 		int daysSpent = 1;
 		int bWeekOffset = 0;
 
 		while (daysSpent < availableDays) {
 			lastDate = lastDate.plusDays(1);
-			if (!isHoliday(lastDate) && workSchedule[lastDate.getDayOfWeek().getValue() + bWeekOffset]) {
+			if (!isHoliday(lastDate) && workSchedule[lastDate.getDayOfWeek().getValue() + bWeekOffset - 1]) {
 				daysSpent += 1;
 			}
 
 			if (lastDate.getDayOfWeek() == java.time.DayOfWeek.MONDAY && workSchedule.length > 7) {
-				if (bWeekOffset == 0){
+				if (bWeekOffset == 0) {
 					bWeekOffset = 7;
 				} else {
 					bWeekOffset = 0;
 				}
 			}
-
 		}
+
 		return lastDate;
 	}
 
