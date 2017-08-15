@@ -200,10 +200,10 @@ public class ISSCAssistantController implements Initializable {
 		// Work Schedule megkreálása a bejelölgetõs imput alapján, egy- vagy
 		// kéthetes kiszerelésben:
 		boolean[] workSchedule;
-		if (buttonTwoWeek.isPressed()) {
-			workSchedule = new boolean[14];
-		} else {
+		if (checkMB.isDisabled()) {
 			workSchedule = new boolean[7];
+		} else {
+			workSchedule = new boolean[14];
 		}
 
 		workSchedule[0] = checkMA.isSelected();
@@ -214,7 +214,7 @@ public class ISSCAssistantController implements Initializable {
 		workSchedule[5] = checkSaA.isSelected();
 		workSchedule[6] = checkSuA.isSelected();
 
-		if (buttonTwoWeek.isPressed()) {
+		if (!checkMB.isDisabled()) {
 			workSchedule[7] = checkMB.isSelected();
 			workSchedule[8] = checkTuB.isSelected();
 			workSchedule[9] = checkWB.isSelected();
@@ -224,14 +224,16 @@ public class ISSCAssistantController implements Initializable {
 			workSchedule[13] = checkSuB.isSelected();
 		}
 
-		// availableSSPDays kiszámolása a két work schedule átlaga alapján.
+		// availableSSPDays kiszámolása a két work schedule átlaga alapján (egy
+		// átmeneti double segítségével a törtek miatt):
 		int availableSSPDays = 0;
 		for (int index = 0; index < workSchedule.length; index++) {
 			if (workSchedule[index]) {
 				availableSSPDays += 1;
 			}
 		}
-		availableSSPDays = ((availableSSPDays / (workSchedule.length / 7)) * 28 + 3);
+		double availableSSPDaysD = (double) availableSSPDays / (double) (workSchedule.length / 7);
+		availableSSPDays = (int) (availableSSPDaysD * 28 + 3);
 
 		// A LastDayCalculator-ba végzi a napok számolgatását:
 		// - firstDay: alapértelmezetten a mai nap, egyébként a datepicker
@@ -242,7 +244,7 @@ public class ISSCAssistantController implements Initializable {
 		// metódusban lévõ listener gondoskodik a valós értékrõl
 		// A kalkuláció csak akkor fut le, ha van CSP entitlement, és a work
 		// schedule se üres (ha üres lenne, az SSP entitlement is 0 lenne):
-		if (availableSSPDays != 0 && availableCSPDays != 0) {
+		if (availableCSPDays > 0 && (availableSSPDays - 3) > 0) {
 			textDateCSP.setText(dayCalculator.calculateLastCSPDay(firstDay, availableCSPDays, workSchedule).toString());
 			textDateSSP.setText(
 					dayCalculator.calculateLastSSPDay(firstDay, SSPDay, availableSSPDays, workSchedule).toString());

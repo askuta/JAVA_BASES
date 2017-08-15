@@ -27,7 +27,7 @@ public class LastDayCalculator {
 	}
 
 	private LocalDate calculateLastDay(LocalDate firstDay, int availableDays, boolean[] workSchedule) {
-
+		
 		LocalDate lastDate = firstDay;
 		int daysSpent = 1;
 		int bWeekOffset = 0;
