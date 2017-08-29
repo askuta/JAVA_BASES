@@ -3,6 +3,7 @@ package com.isscassistant;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,10 +13,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
 
 public class ISSCAssistantController implements Initializable {
 
@@ -23,52 +21,19 @@ public class ISSCAssistantController implements Initializable {
 	private GridPane mainPane;
 
 	@FXML
-	private Label text1;
-
-	@FXML
 	private DatePicker pickerFirstDay;
-
-	@FXML
-	private DatePicker pickerSSPDay;
-
-	@FXML
-	private Label text2;
 
 	@FXML
 	private TextField textFieldCSP;
 
 	@FXML
-	private ImageView pictureSick;
+	private TextField textFieldLinking;
 
 	@FXML
 	private Button buttonTwoWeek;
 
 	@FXML
-	private Button buttonLinking;
-
-	@FXML
-	private Label text4;
-
-	@FXML
-	private Label textM;
-
-	@FXML
-	private Label textTu;
-
-	@FXML
-	private Label textW;
-
-	@FXML
-	private Label textTh;
-
-	@FXML
-	private Label textF;
-
-	@FXML
-	private Label textSa;
-
-	@FXML
-	private Label textSu;
+	private Label textWeekB;
 
 	@FXML
 	private CheckBox checkMA;
@@ -95,9 +60,6 @@ public class ISSCAssistantController implements Initializable {
 	private Label textWeekA;
 
 	@FXML
-	private Label textWeekB;
-
-	@FXML
 	private CheckBox checkMB;
 
 	@FXML
@@ -119,34 +81,16 @@ public class ISSCAssistantController implements Initializable {
 	private CheckBox checkSuB;
 
 	@FXML
-	private Line lineBottom;
-
-	@FXML
 	private Button buttonCalculate;
 
 	@FXML
-	private Label text5;
-
-	@FXML
 	private Label textDateCSP;
-
-	@FXML
-	private Label text6;
 
 	@FXML
 	private Label textDateSSP;
 
 	@FXML
 	private Button buttonExit;
-
-	@FXML
-	private Rectangle labelBackground;
-
-	@FXML
-	private Label textTitle;
-
-	@FXML
-	private Label textCreators;
 
 	private LastDayCalculator dayCalculator = new LastDayCalculator();
 
@@ -161,34 +105,15 @@ public class ISSCAssistantController implements Initializable {
 		checkFB.setDisable(!checkFB.isDisabled());
 		checkSaB.setDisable(!checkSaB.isDisabled());
 		checkSuB.setDisable(!checkSuB.isDisabled());
+
 		textWeekA.setVisible(!textWeekA.isVisible());
 		textWeekB.setVisible(!textWeekB.isVisible());
-		// A "B" work schedule hasonul az "A"-val ki-be kapcsolgatás során:
-		checkMB.setSelected(checkMA.isSelected());
-		checkTuB.setSelected(checkTuA.isSelected());
-		checkWB.setSelected(checkWA.isSelected());
-		checkThB.setSelected(checkThA.isSelected());
-		checkFB.setSelected(checkFA.isSelected());
-		checkSaB.setSelected(checkSaA.isSelected());
-		checkSuB.setSelected(checkSuA.isSelected());
-	}
-
-	@FXML
-	void onLinkingButtonAction(ActionEvent event) {
-		pickerSSPDay.setDisable(!pickerSSPDay.isDisabled());
-		pickerSSPDay.setValue(pickerFirstDay.getValue());
 	}
 
 	@FXML
 	void onCalculateButtonAction(ActionEvent event) {
 		// Az elsõ nap lekérdezése a datepicker-tõl:
 		LocalDate firstDay = pickerFirstDay.getValue();
-		// ha a pickerSSPDay ki van kapcsolva, változzon a datepicker a normál
-		// elsõ napra, és legyen aszerint a dátum:
-		if (pickerSSPDay.isDisabled()) {
-			pickerSSPDay.setValue(pickerFirstDay.getValue());
-		}
-		LocalDate SSPDay = pickerSSPDay.getValue();
 
 		// availableCSPDays legyen alapból 0, de ha a megfelelõ textfieldnek van
 		// értelmes értéke, akkor azzal felülírjuk:
@@ -232,8 +157,12 @@ public class ISSCAssistantController implements Initializable {
 				availableSSPDays += 1;
 			}
 		}
-		double availableSSPDaysD = (double) availableSSPDays / (double) (workSchedule.length / 7);
-		availableSSPDays = (int) (availableSSPDaysD * 28 + 3);
+		double availableSSPDaysD = (double) availableSSPDays / (workSchedule.length / 7);
+		availableSSPDays = (int) (availableSSPDaysD * 28);
+		if (textFieldLinking.getText() != null && textFieldLinking.getText().length() != 0) {
+			availableSSPDays -= Integer.valueOf(textFieldLinking.getText());
+		}
+		
 
 		// A LastDayCalculator-ba végzi a napok számolgatását:
 		// - firstDay: alapértelmezetten a mai nap, egyébként a datepicker
@@ -245,9 +174,8 @@ public class ISSCAssistantController implements Initializable {
 		// A kalkuláció csak akkor fut le, ha van CSP entitlement, és a work
 		// schedule se üres (ha üres lenne, az SSP entitlement is 0 lenne):
 		if (availableCSPDays > 0 && (availableSSPDays - 3) > 0) {
-			textDateCSP.setText(dayCalculator.calculateLastCSPDay(firstDay, availableCSPDays, workSchedule).toString());
-			textDateSSP.setText(
-					dayCalculator.calculateLastSSPDay(firstDay, SSPDay, availableSSPDays, workSchedule).toString());
+			textDateCSP.setText(dayCalculator.calculateLastDay(firstDay, availableCSPDays, workSchedule).toString());
+			textDateSSP.setText(dayCalculator.calculateLastDay(firstDay.plusDays(3), availableSSPDays, workSchedule).toString());
 		}
 	}
 
@@ -258,32 +186,21 @@ public class ISSCAssistantController implements Initializable {
 
 	@FXML
 	void onExitButtonAction(ActionEvent event) {
-		// Ez a metósud akkor hívódik meg, ha az "Exit"
-		// gombra kattintasz egérrel vagy entert nyomsz rá.
-
-		// Így zársz be egy JavaFX alkalmazást:
+		// JavaFX alkalmazás bezárása:
 		Platform.exit();
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// Beállítom a datepickert mára, hogy ne üresen kezdjen. Ha nem tetszik,
-		// törölheted,
-		// de akkor le kell kezelned a default "null" értékét a
-		// "onCalculateButtonAction" metódusban.
-		// Megjegyzés: A datepicker csak valós dátumot enged bevinni.
+		// Beállítom a datepickereket mára, hogy ne üresen kezdjen:
 		pickerFirstDay.setValue(LocalDate.now());
-		pickerSSPDay.setValue(LocalDate.now());
 
 		// Az alábbi két listener nem a UI elemekre vannak rákötve, hanem a UI
-		// elemek
-		// által kezelt szövegre. Így nem kell lekezelni mindenféle UI
-		// eseményeket
-		// (gépelés, egerészés, drag&drop, hanem elég a kezelt szöveget
-		// figyelni.
-		// A SceneBuilderben csak a UI elemekhez tud metódust rendelni, ezért a
-		// UI
-		// elemen belül kezelt szöveghez nekünk kell listenert hozzáadni.
+		// elemek által kezelt szövegre. Így nem kell lekezelni mindenféle UI
+		// eseményeket (gépelés, egerészés, drag&drop, hanem elég a kezelt
+		// szöveget figyelni.
+		// A SceneBuilderben csak a UI elemekhez tud metódust rendelni, ezért
+		// a UI elemen belül kezelt szöveghez nekünk kell listenert hozzáadni.
 		textFieldCSP.textProperty().addListener((observable, oldValue, newValue) -> {
 			// Ha az új szöveg nem néz ki "napok számának", akkor "megtartjuk" a
 			// régi értéket.
@@ -291,13 +208,15 @@ public class ISSCAssistantController implements Initializable {
 				textFieldCSP.textProperty().setValue(oldValue);
 			}
 		});
+		textFieldLinking.textProperty().addListener((observable, oldValue, newValue) -> {
+			// Ha az új szöveg nem néz ki "napok számának", akkor "megtartjuk" a
+			// régi értéket.
+			if (!isStringValidAsDays(newValue)) {
+				textFieldLinking.textProperty().setValue(oldValue);
+			}
+		});
 
 		setWeeks();
-
-		boolean[] initWorkSchedule = { true, true, true, true, true, false, false };
-		textDateCSP.setText(dayCalculator.calculateLastCSPDay(LocalDate.now(), 0, initWorkSchedule).toString());
-		textDateSSP.setText(
-				dayCalculator.calculateLastSSPDay(LocalDate.now(), LocalDate.now(), 0, initWorkSchedule).toString());
 	}
 
 	private boolean isStringValidAsDays(String str) {
@@ -309,12 +228,9 @@ public class ISSCAssistantController implements Initializable {
 	}
 
 	private void setWeeks() {
-		LocalDate firstDateOfSchedule = pickerFirstDay.getValue();
-		while (firstDateOfSchedule.getDayOfWeek() != java.time.DayOfWeek.MONDAY) {
-			firstDateOfSchedule = firstDateOfSchedule.minusDays(1);
-		}
-		textWeekA.setText(firstDateOfSchedule.toString() + " to " + firstDateOfSchedule.plusDays(6).toString());
-		textWeekB.setText(
-				firstDateOfSchedule.plusDays(7).toString() + " to " + firstDateOfSchedule.plusDays(13).toString());
+		LocalDate mondayOfSchedule = pickerFirstDay.getValue()
+				.minusDays(pickerFirstDay.getValue().getDayOfWeek().getValue() - 1);
+		textWeekA.setText(mondayOfSchedule.toString() + " to " + mondayOfSchedule.plusDays(6).toString());
+		textWeekB.setText(mondayOfSchedule.plusDays(7).toString() + " to " + mondayOfSchedule.plusDays(13).toString());
 	}
 }
