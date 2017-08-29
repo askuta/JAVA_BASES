@@ -5,6 +5,7 @@
 
 # Package Files #
 *.jar
+!programs/ISSCAssistant/libs/*.jar
 *.war
 *.ear
 
