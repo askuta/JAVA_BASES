@@ -227,6 +227,7 @@ public class ISSCAssistantController implements Initializable {
 		return false;
 	}
 
+	// Az A-hét és B-hét tartományának a szövegének megadása:
 	private void setWeeks() {
 		LocalDate mondayOfSchedule = pickerFirstDay.getValue()
 				.minusDays(pickerFirstDay.getValue().getDayOfWeek().getValue() - 1);

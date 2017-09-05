@@ -19,15 +19,27 @@ public class LastDayCalculator {
 
 	public LocalDate calculateLastDay(LocalDate firstDay, int availableDays, boolean[] workSchedule) {
 		LocalDate lastDate = firstDay;
+
+		// Ez váltogatja az A meg B hetet:
 		int bWeekOffset = 0;
 
+		// Ez számlálja le a fölhasznált entitlement-et:
 		int daysSpent = 0;
+
+		// Leellenõrzi, hogy az adott nap szabadnapra vagy hétvégére esik-e:
+		if (!isHoliday(lastDate) && workSchedule[lastDate.getDayOfWeek().getValue() + bWeekOffset - 1]) {
+			daysSpent += 1;
+		}
 		while (daysSpent < availableDays) {
+
+			// Elõrelép egy napot:
 			lastDate = lastDate.plusDays(1);
+
 			if (!isHoliday(lastDate) && workSchedule[lastDate.getDayOfWeek().getValue() + bWeekOffset - 1]) {
 				daysSpent += 1;
 			}
 
+			// Átvált a másik hétre, ha van B hét is:
 			if (lastDate.getDayOfWeek() == java.time.DayOfWeek.MONDAY && workSchedule.length > 7) {
 				if (bWeekOffset == 0) {
 					bWeekOffset = 7;
