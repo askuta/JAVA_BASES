@@ -170,11 +170,11 @@ public class CountryStat {
 		return mortalityChildMale;
 	}
 	
-	public double getraceNegIndex() {
+	public int getraceNegIndex() {
 		return raceNegIndex;
 	}
 	
-	public double getraceMonIndex() {
+	public int getraceMonIndex() {
 		return raceMonIndex;
 	}
 }

@@ -24,7 +24,6 @@ public class StatContainer {
 	}
 
 	public CountryStat getRandomCountryStat() {
-		System.out.println(worldPopulation);
 		long randomHeadcount = Math.abs(random.nextLong()) % worldPopulation;
 
 		long counterHeadcount = 0;

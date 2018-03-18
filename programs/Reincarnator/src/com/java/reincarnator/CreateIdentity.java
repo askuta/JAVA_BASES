@@ -17,6 +17,7 @@ public class CreateIdentity {
 		CountryStat countryStat = statContainer.getRandomCountryStat();
 		Identity identity = new Identity();
 
+		identity.setCountryStat(countryStat);
 		identity.setGender(createGender(countryStat));
 		identity.setDeath(createDeath(countryStat, identity.getGender()));
 		identity.setUrban(createUrban(countryStat));
@@ -43,31 +44,19 @@ public class CreateIdentity {
 			incomeDecimals[index] = Math.floor(incomeDecimals[index] * 100) / 100;
 		}
 
-		// Ellenõrzés céljából:
-		// for (int index = 0; index < incomeDecimals.length; index++) {
-		// System.out.print(incomeDecimals[index] + " | ");
-		// }
-		// System.out.println("");
-		// Eddig
+//		 Ellenõrzés céljából:
+		 for (int index = 0; index < incomeDecimals.length; index++) {
+		 System.out.print(incomeDecimals[index] + " | ");
+		 }
+		 System.out.println("");
+//		 Eddig
 
 		int decimal = random.nextInt(12);
 
 		// Rögtönzött súlyozás nem és lakhely szerint, nagyjából 20%-os
 		// eltéréssel számolva
-		int bias = random.nextInt(6);
-		switch (bias) {
-		case 3:
-			bias = 1;
-			break;
-		case 4:
-			bias = 1;
-			break;
-		case 5:
-			bias = 2;
-			break;
-		default:
-			bias = 0;
-		}
+		
+		int bias = generateBias();
 
 		if (gender == Gender.MALE) {
 			switch (bias) {
@@ -101,20 +90,7 @@ public class CreateIdentity {
 			}
 		}
 
-		bias = random.nextInt(6);
-		switch (bias) {
-		case 3:
-			bias = 1;
-			break;
-		case 4:
-			bias = 1;
-			break;
-		case 5:
-			bias = 2;
-			break;
-		default:
-			bias = 0;
-		}
+		bias = generateBias();
 
 		if (urban == Urban.URBAN) {
 			switch (bias) {
@@ -167,6 +143,20 @@ public class CreateIdentity {
 		}
 
 		return Math.floor(dollarsPerDay * 100) / 100;
+	}
+	
+	private static int generateBias() {
+		int bias = random.nextInt(6);
+		switch (bias) {
+		case 3:
+			return 1;
+		case 4:
+			return 1;
+		case 5:
+			return 2;
+		default:
+			return 0;
+		}
 	}
 
 	private static Death createDeath(CountryStat countryStat, Gender gender) {
