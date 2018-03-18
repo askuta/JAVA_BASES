@@ -27,6 +27,8 @@ public class CountryStat {
 	private final double mortalityInfantMale;
 	private final double mortalityChildFemale;
 	private final double mortalityChildMale;
+	private final int raceNegIndex;
+	private final int raceMonIndex;
 
 	public CountryStat(String name, int population, double womanRate,
 			double urbanRate, double electricityRural, double electricityUrban,
@@ -37,7 +39,8 @@ public class CountryStat {
 			double improvedWater, double smokingFemale, double smokingMale,
 			double migrantStock, double literacyFemale, double literacyMale,
 			double mortalityInfantFemale, double mortalityInfantMale,
-			double mortalityChildFemale, double mortalityChildMale) {
+			double mortalityChildFemale, double mortalityChildMale,
+			int raceNegIndex, int raceMonIndex) {
 		this.name = name;
 		this.population = population;
 		this.womanRate = womanRate;
@@ -63,6 +66,8 @@ public class CountryStat {
 		this.mortalityInfantMale = mortalityInfantMale;
 		this.mortalityChildFemale = mortalityChildFemale;
 		this.mortalityChildMale = mortalityChildMale;
+		this.raceNegIndex = raceNegIndex;
+		this.raceMonIndex = raceMonIndex;
 	}
 
 	public String getName() {
@@ -163,5 +168,13 @@ public class CountryStat {
 
 	public double getMortalityChildMale() {
 		return mortalityChildMale;
+	}
+	
+	public double getraceNegIndex() {
+		return raceNegIndex;
+	}
+	
+	public double getraceMonIndex() {
+		return raceMonIndex;
 	}
 }

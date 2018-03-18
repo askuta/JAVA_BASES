@@ -22,6 +22,10 @@ public class Identity {
 	private Urban urban;
 	private double dollarsPerDay;
 
+	public Identity() {
+		livesCounter += 1;
+	}
+	
 	public Identity(String country, Gender gender, Death death, Urban urban,
 			double dollarsPerDay) {
 		this.country = country;
@@ -30,6 +34,26 @@ public class Identity {
 		this.urban = urban;
 		this.dollarsPerDay = dollarsPerDay;
 		livesCounter += 1;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
+	public void setDeath(Death death) {
+		this.death = death;
+	}
+
+	public void setUrban(Urban urban) {
+		this.urban = urban;
+	}
+
+	public void setDollarsPerDay(double dollarsPerDay) {
+		this.dollarsPerDay = dollarsPerDay;
 	}
 
 	public String getCountry() {
@@ -56,7 +80,7 @@ public class Identity {
 
 		if (death != Death.ALIVE) {
 			String description = "Whoops, you passed away ";
-			if (death == death.INFANT) {
+			if (death == Death.INFANT) {
 				description += "after birth as baby ";
 			} else {
 				description += "as a little ";
