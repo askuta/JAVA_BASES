@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class StatContainer {
 
-	private static final String STAT_FILE = "/ReincaStats5.csv";
+	private static final String STAT_FILE = "/ReincaStats6.csv";
 
 	private static final int NUMBER_OF_STAT_RECORDS = 217;
 
@@ -77,6 +77,8 @@ public class StatContainer {
 				double mortalityInfantMale = Double.parseDouble(splits[22]);
 				double mortalityChildFemale = Double.parseDouble(splits[23]);
 				double mortalityChildMale = Double.parseDouble(splits[24]);
+				int raceNegIndex = Integer.parseInt(splits[25]);
+				int raceMonIndex = Integer.parseInt(splits[26]);
 
 				countryStats[index] = new CountryStat(splits[0], population,
 						womanRate, urbanRate, electricityRural,
@@ -87,7 +89,7 @@ public class StatContainer {
 						smokingMale, migrantStock, literacyFemale,
 						literacyMale, mortalityInfantFemale,
 						mortalityInfantMale, mortalityChildFemale,
-						mortalityChildMale);
+						mortalityChildMale,raceNegIndex, raceMonIndex);
 			}
 
 		} catch (IOException e) {
