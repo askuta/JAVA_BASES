@@ -17,6 +17,7 @@ public class Identity {
 	}
 
 	private CountryStat countryStat;
+	private String personName;
 	private Gender gender;
 	private Death death;
 	private Urban urban;
@@ -25,9 +26,8 @@ public class Identity {
 	public Identity() {
 		livesCounter += 1;
 	}
-	
-	public Identity(CountryStat countryStat, Gender gender, Death death, Urban urban,
-			double dollarsPerDay) {
+
+	public Identity(CountryStat countryStat, String personName, Gender gender, Death death, Urban urban, double dollarsPerDay) {
 		this.countryStat = countryStat;
 		this.gender = gender;
 		this.death = death;
@@ -38,6 +38,10 @@ public class Identity {
 
 	public void setCountryStat(CountryStat countryStat) {
 		this.countryStat = countryStat;
+	}
+	
+	public void setPersonName(String personName) {
+		this.personName = personName;
 	}
 
 	public void setGender(Gender gender) {
@@ -58,6 +62,10 @@ public class Identity {
 
 	public CountryStat getCountryStat() {
 		return countryStat;
+	}
+	
+	public String getPersonName() {
+		return personName;
 	}
 
 	public Gender getGender() {
@@ -116,13 +124,11 @@ public class Identity {
 			if (dollarsPerDay <= 1.9) {
 				description += "You live in extreme poverty. ";
 			} else {
-				description += "You live by " + dollarsPerDay
-						+ " intern. dollars per day. ";
+				description += "You live by " + dollarsPerDay + " intern. dollars per day. ";
 			}
 
 			if ("Hungary".equals(countryStat.getName())) {
-				description += "! Welcome to Magyaristan! You waited "
-						+ livesCounter + " lives.";
+				description += "! Welcome to Magyaristan! You waited " + livesCounter + " lives.";
 				livesCounter = 0;
 			}
 			return description;

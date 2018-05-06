@@ -15,14 +15,18 @@ public class ReincarnatorController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		identityCreator = new IdentityCreator();
 	}
 	
+	private IdentityCreator identityCreator;
 	private Identity identity;
 	private Embodiment embodiment;
 	
 	@FXML
 	private Text identityDescription;
+
+    @FXML
+    private Text identityName;
 
 	@FXML
 	private Button reincarnate;
@@ -53,10 +57,10 @@ public class ReincarnatorController implements Initializable {
 
 	@FXML
 	void onReincarnateAction(ActionEvent event) {
-		
-		identity = CreateIdentity.createIdentity();
+		identity = identityCreator.createIdentity();
+		identityName.setText(identity.getPersonName());
 		identityDescription.setText(identity.getDescription());
-		embodiment = CreateEmbodiment.createEmbodiment(identity);
+		embodiment = EmbodimentCreator.createEmbodiment(identity);
 		drawEmbodiment(embodiment);
 	}
 

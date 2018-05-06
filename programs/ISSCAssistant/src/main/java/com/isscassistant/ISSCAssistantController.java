@@ -158,7 +158,7 @@ public class ISSCAssistantController implements Initializable {
 			}
 		}
 		double availableSSPDaysD = (double) availableSSPDays / (workSchedule.length / 7);
-		availableSSPDays = (int) (availableSSPDaysD * 28);
+		availableSSPDays = (int) (availableSSPDaysD * 28 + 3);
 		if (textFieldLinking.getText() != null && textFieldLinking.getText().length() != 0) {
 			availableSSPDays -= Integer.valueOf(textFieldLinking.getText());
 		}
@@ -173,9 +173,9 @@ public class ISSCAssistantController implements Initializable {
 		// metódusban lévõ listener gondoskodik a valós értékrõl
 		// A kalkuláció csak akkor fut le, ha van CSP entitlement, és a work
 		// schedule se üres (ha üres lenne, az SSP entitlement is 0 lenne):
-		if (availableCSPDays > 0 && (availableSSPDays - 3) > 0) {
+		if (availableCSPDays > 0 && (availableSSPDays) > 0) {
 			textDateCSP.setText(dayCalculator.calculateLastDay(firstDay, availableCSPDays, workSchedule).toString());
-			textDateSSP.setText(dayCalculator.calculateLastDay(firstDay.plusDays(3), availableSSPDays, workSchedule).toString());
+			textDateSSP.setText(dayCalculator.calculateLastDay(firstDay, availableSSPDays, workSchedule).toString());
 		}
 	}
 
