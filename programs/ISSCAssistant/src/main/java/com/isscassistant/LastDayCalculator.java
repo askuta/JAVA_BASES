@@ -13,7 +13,9 @@ public class LastDayCalculator {
 			LocalDate.of(2017, 4, 17), LocalDate.of(2017, 5, 1), LocalDate.of(2017, 5, 29), LocalDate.of(2017, 8, 28),
 			LocalDate.of(2017, 12, 25), LocalDate.of(2017, 12, 26), LocalDate.of(2018, 1, 1), LocalDate.of(2018, 3, 30),
 			LocalDate.of(2018, 4, 2), LocalDate.of(2018, 5, 7), LocalDate.of(2018, 5, 28), LocalDate.of(2018, 8, 27),
-			LocalDate.of(2018, 12, 25), LocalDate.of(2018, 12, 26) };
+			LocalDate.of(2018, 12, 25), LocalDate.of(2018, 12, 26), LocalDate.of(2019, 1, 1), LocalDate.of(2019, 4, 19),
+			LocalDate.of(2019, 4, 22), LocalDate.of(2019, 5, 6), LocalDate.of(2019, 5, 27), LocalDate.of(2019, 8, 26),
+			LocalDate.of(2019, 12, 25), LocalDate.of(2019, 12, 26) };
 
 	private static final Set<LocalDate> HOLIDAYS_UK = new HashSet<>(Arrays.asList(HOLIDAYS_UK_ARRAY));
 

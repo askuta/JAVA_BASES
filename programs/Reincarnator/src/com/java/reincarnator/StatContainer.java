@@ -3,11 +3,13 @@ package com.java.reincarnator;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class StatContainer {
 
-	private static final String STAT_FILE = "/ReincaStats6.csv";
+	private static final String STAT_FILE = "/ReincaStats.csv";
 
 	private static final int NUMBER_OF_STAT_RECORDS = 217;
 
@@ -43,8 +45,8 @@ public class StatContainer {
 	public void readStats() {
 		worldPopulation = 0;
 
-		try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-				getClass().getResourceAsStream(STAT_FILE)))) {
+		try (BufferedReader reader = new BufferedReader(
+				new InputStreamReader(getClass().getResourceAsStream(STAT_FILE)))) {
 
 			String line;
 			String[] splits;
@@ -79,17 +81,41 @@ public class StatContainer {
 				double mortalityChildMale = Double.parseDouble(splits[24]);
 				int raceNegIndex = Integer.parseInt(splits[25]);
 				int raceMonIndex = Integer.parseInt(splits[26]);
+				int nameInfo = Integer.parseInt(splits[27]);
 
-				countryStats[index] = new CountryStat(splits[0], population,
-						womanRate, urbanRate, electricityRural,
-						electricityUrban, internetAccess, hivFemale, hivMale,
-						femaleGenitalMutilation, averageDollarsPerDay,
-						giniIndex, unemploymentFemale, unemploymentMale,
-						improvedSanitation, improvedWater, smokingFemale,
-						smokingMale, migrantStock, literacyFemale,
-						literacyMale, mortalityInfantFemale,
-						mortalityInfantMale, mortalityChildFemale,
-						mortalityChildMale,raceNegIndex, raceMonIndex);
+				int splitIndex = 28;
+
+				List<String> maleFirstNames = new ArrayList<>();
+				while ((splits[splitIndex] != "") && (splitIndex < 128)) {
+					maleFirstNames.add(splits[splitIndex]);
+					splitIndex++;
+				}
+
+				List<String> femaleFirstNames = new ArrayList<>();
+				while ((splits[splitIndex] != "") && (splitIndex < 228)) {
+					femaleFirstNames.add(splits[splitIndex]);
+					splitIndex++;
+				}
+
+				List<String> maleFamilyNames = new ArrayList<>();
+				while ((splits[splitIndex] != "") && (splitIndex < 328)) {
+					maleFamilyNames.add(splits[splitIndex]);
+					splitIndex++;
+				}
+
+				List<String> femaleFamilyNames = new ArrayList<>();
+				while ((splits[splitIndex] != "") && (splitIndex < 428)) {
+					femaleFamilyNames.add(splits[splitIndex]);
+					splitIndex++;
+				}
+
+				countryStats[index] = new CountryStat(splits[0], population, womanRate, urbanRate, electricityRural,
+						electricityUrban, internetAccess, hivFemale, hivMale, femaleGenitalMutilation,
+						averageDollarsPerDay, giniIndex, unemploymentFemale, unemploymentMale, improvedSanitation,
+						improvedWater, smokingFemale, smokingMale, migrantStock, literacyFemale, literacyMale,
+						mortalityInfantFemale, mortalityInfantMale, mortalityChildFemale, mortalityChildMale,
+						raceNegIndex, raceMonIndex, nameInfo, maleFirstNames, femaleFirstNames, maleFamilyNames,
+						femaleFamilyNames);
 			}
 
 		} catch (IOException e) {

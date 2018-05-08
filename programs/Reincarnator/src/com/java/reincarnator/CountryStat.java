@@ -1,6 +1,14 @@
 package com.java.reincarnator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CountryStat {
+
+	private final List<String> maleFirstNames = new ArrayList<>();
+	private final List<String> femaleFirstNames = new ArrayList<>();
+	private final List<String> maleFamilyNames = new ArrayList<>();
+	private final List<String> femaleFamilyNames = new ArrayList<>();
 
 	private final String name;
 	private final int population;
@@ -29,18 +37,16 @@ public class CountryStat {
 	private final double mortalityChildMale;
 	private final int raceNegIndex;
 	private final int raceMonIndex;
+	private final int nameInfo;
 
-	public CountryStat(String name, int population, double womanRate,
-			double urbanRate, double electricityRural, double electricityUrban,
-			double averageDollarsPerDay, double internetAccess,
-			double hivFemale, double hivMale, double femaleGenitalMutilation,
-			double giniIndex, double unemploymentFemale,
-			double unemploymentMale, double improvedSanitation,
-			double improvedWater, double smokingFemale, double smokingMale,
-			double migrantStock, double literacyFemale, double literacyMale,
-			double mortalityInfantFemale, double mortalityInfantMale,
-			double mortalityChildFemale, double mortalityChildMale,
-			int raceNegIndex, int raceMonIndex) {
+	public CountryStat(String name, int population, double womanRate, double urbanRate, double electricityRural,
+			double electricityUrban, double averageDollarsPerDay, double internetAccess, double hivFemale,
+			double hivMale, double femaleGenitalMutilation, double giniIndex, double unemploymentFemale,
+			double unemploymentMale, double improvedSanitation, double improvedWater, double smokingFemale,
+			double smokingMale, double migrantStock, double literacyFemale, double literacyMale,
+			double mortalityInfantFemale, double mortalityInfantMale, double mortalityChildFemale,
+			double mortalityChildMale, int raceNegIndex, int raceMonIndex, int nameInfo, List<String> maleFirstNames,
+			List<String> femaleFirstNames, List<String> maleFamilyNames, List<String> femaleFamilyNames) {
 		this.name = name;
 		this.population = population;
 		this.womanRate = womanRate;
@@ -68,6 +74,19 @@ public class CountryStat {
 		this.mortalityChildMale = mortalityChildMale;
 		this.raceNegIndex = raceNegIndex;
 		this.raceMonIndex = raceMonIndex;
+		this.nameInfo = nameInfo;
+		if (maleFirstNames != null) {
+			this.maleFirstNames.addAll(maleFirstNames);
+		}
+		if (femaleFirstNames != null) {
+			this.femaleFirstNames.addAll(femaleFirstNames);
+		}
+		if (maleFamilyNames != null) {
+			this.maleFamilyNames.addAll(maleFamilyNames);
+		}
+		if (femaleFamilyNames != null) {
+			this.femaleFamilyNames.addAll(femaleFamilyNames);
+		}
 	}
 
 	public String getName() {
@@ -85,27 +104,27 @@ public class CountryStat {
 	public double getUrbanRate() {
 		return urbanRate;
 	}
-	
+
 	public double electricityRural() {
 		return electricityRural;
 	}
-	
+
 	public double electricityUrban() {
 		return electricityUrban;
 	}
-	
+
 	public double internetAccess() {
 		return internetAccess;
 	}
-	
+
 	public double hivFemale() {
 		return hivFemale;
 	}
-	
+
 	public double hivMale() {
 		return hivMale;
 	}
-	
+
 	public double femaleGenitalMutilation() {
 		return femaleGenitalMutilation;
 	}
@@ -117,39 +136,39 @@ public class CountryStat {
 	public double getGiniIndex() {
 		return giniIndex;
 	}
-	
+
 	public double unemploymentFemale() {
 		return unemploymentFemale;
 	}
-	
+
 	public double unemploymentMale() {
 		return unemploymentMale;
 	}
-	
+
 	public double improvedSanitation() {
 		return improvedSanitation;
 	}
-	
+
 	public double improvedWater() {
 		return improvedWater;
 	}
-	
+
 	public double smokingFemale() {
 		return smokingFemale;
 	}
-	
+
 	public double smokingMale() {
 		return smokingMale;
 	}
-	
+
 	public double migrantStock() {
 		return migrantStock;
 	}
-	
+
 	public double literacyFemale() {
 		return literacyFemale;
 	}
-	
+
 	public double literacyMale() {
 		return literacyMale;
 	}
@@ -169,12 +188,32 @@ public class CountryStat {
 	public double getMortalityChildMale() {
 		return mortalityChildMale;
 	}
-	
+
 	public int getraceNegIndex() {
 		return raceNegIndex;
 	}
-	
+
 	public int getraceMonIndex() {
 		return raceMonIndex;
+	}
+	
+	public int getNameInfo() {
+		return nameInfo;
+	}
+	
+	public List<String> getMaleFirstNames() {
+		return maleFirstNames;
+	}
+	
+	public List<String> getFemaleFirstNames() {
+		return femaleFirstNames;
+	}
+	
+	public List<String> getMaleFamilyNames() {
+		return maleFamilyNames;
+	}
+	
+	public List<String> getFemaleFamilyNames() {
+		return femaleFamilyNames;
 	}
 }
